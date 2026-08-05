@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Work — Julian Matti</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #080808;
+  --surface:    #0F0F0F;
+  --surface2:   #131313;
+  --border:     #1C1C1C;
+  --border2:    #2A2A2A;
+  --text-dim:   #2E2E2E;
+  --text-mid:   #555;
+  --text-body:  #888;
+  --text-main:  #E0E0E0;
+  --white:      #F0F0F0;
+  --gold:       #E8A838;
+  --rose:       #D4607A;
+  --grad:       linear-gradient(135deg, #E8A838 0%, #D4607A 100%);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ── GRAIN ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── ORBS ── */
+.orb-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+}
+
+.orb-1 {
+  width: 600px; height: 600px;
+  left: -15%; top: -10%;
+  background: radial-gradient(ellipse, rgba(232,168,56,0.08) 0%, transparent 70%);
+  animation: orbFloat 1s 0.2s ease forwards, drift1 18s 1.2s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  width: 500px; height: 500px;
+  right: -10%; top: 20%;
+  background: radial-gradient(ellipse, rgba(212,96,122,0.06) 0%, transparent 70%);
+  animation: orbFloat 1s 0.5s ease forwards, drift2 22s 1.5s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+  width: 400px; height: 400px;
+  left: 30%; bottom: 5%;
+  background: radial-gradient(ellipse, rgba(232,168,56,0.05) 0%, transparent 70%);
+  animation: orbFloat 1s 0.8s ease forwards, drift3 26s 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drift1 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(60px,80px) scale(1.15); }
+}
+
+@keyframes drift2 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(-80px,60px) scale(1.1); }
+}
+
+@keyframes drift3 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(40px,-60px) scale(1.2); }
+}
+
+/* ── Z-INDEX ── */
+nav, #hero, #strategist, #influencer, #cases, #reel, #skills, #testimonials, #contact, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── UTILITIES ── */
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-tag {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.section-tag::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+nav.scrolled {
+  background: rgba(8,8,8,0.95);
+  border-color: var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 8px 18px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.nav-cta:hover { background: var(--gold); color: var(--black); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 48px 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 9vw, 128px);
+  letter-spacing: 1px;
+  line-height: 0.88;
+  color: var(--white);
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-title .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.45s ease both;
+}
+
+.hero-name {
+  font-size: 14px;
+  color: var(--text-body);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.hero-name strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.hero-divider {
+  width: 1px; height: 20px;
+  background: var(--border2);
+}
+
+.hero-role {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 64px;
+  animation: fadeUp 0.8s 0.55s ease both;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stat {
+  background: var(--black);
+  padding: 24px 28px;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 9.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ── STRATEGIST ── */
+#strategist {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.strategist-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.strategist-left { }
+
+.strategist-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 28px;
+}
+
+.strategist-body {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.strategist-body em {
+  color: var(--text-main);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.strategist-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.credential {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+
+.credential:hover { border-color: var(--border2); }
+
+.credential-label {
+  font-size: 12px;
+  color: var(--text-body);
+  font-weight: 300;
+}
+
+.credential-value {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── INFLUENCER ── */
+#influencer {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.influencer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.influencer-header {
+  margin-bottom: 56px;
+}
+
+.influencer-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.influencer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.inf-card {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.inf-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.inf-card:hover { border-color: var(--border2); }
+.inf-card:hover::before { opacity: 1; }
+
+.inf-icon {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.inf-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+.inf-body {
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── CASE STUDIES ── */
+#cases {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cases-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cases-header {
+  margin-bottom: 56px;
+}
+
+.cases-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.case {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 48px 52px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.case::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--border);
+  transition: background 0.3s;
+  border-radius: 3px 0 0 3px;
+}
+
+.case:hover { border-color: var(--border2); }
+.case:hover::before { background: var(--grad); }
+
+.case-brand {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.case-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3.5vw, 46px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
+
+.case-context {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.case-narrative {
+  font-size: 13.5px;
+  color: var(--text-body);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.case-metrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding-left: 48px;
+  border-left: 1px solid var(--border);
+}
+
+.metric-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  font-weight: 300;
+  margin-top: 4px;
+}
+
+.metric-note {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 3px;
+}
+
+/* ── CONTENT REEL ── */
+#reel {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.reel-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.reel-header {
+  margin-bottom: 56px;
+}
+
+.reel-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.reel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.reel-item {
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.reel-item:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+
+.reel-item.featured {
+  grid-column: span 2;
+}
+
+.reel-video {
+  width: 100%;
+  aspect-ratio: 9/16;
+  border: none;
+  display: block;
+  background: var(--surface2);
+}
+
+.reel-item.featured .reel-video {
+  aspect-ratio: 16/9;
+}
+
+.reel-info {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.reel-client {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.reel-desc {
+  font-size: 12px;
+  color: var(--text-body);
+  font-weight: 300;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.reel-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.reel-tag {
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border2);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* ── SKILLS ── */
+#skills {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skills-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.skills-header {
+  margin-bottom: 56px;
+}
+
+.skills-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.skill-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px 36px;
+  border-radius: 8px;
+}
+
+.skill-block-title {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-size: 11px;
+  color: var(--text-body);
+  border: 1px solid var(--border2);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-weight: 300;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.skill-tag:hover { border-color: var(--text-mid); color: var(--text-main); }
+
+.skill-tag.highlight {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── TESTIMONIALS ── */
+#testimonials {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonials-header { margin-bottom: 56px; }
+
+.testimonials-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.testimonial {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.testimonial:hover { border-color: var(--border2); }
+
+.testimonial-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.65;
+  color: var(--text-main);
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonial-quote::before {
+  content: '"';
+  font-size: 48px;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.4;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.author-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.author-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.author-title {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  font-weight: 300;
+}
+
+.testimonial-incoming {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 40px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border-radius: 8px;
+}
+
+.incoming-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* ── CONTACT ── */
+#contact {
+  padding: 120px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(232,168,56,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-tag {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contact-tag::before,
+.contact-tag::after {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+
+.contact-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 96px);
+  letter-spacing: 1px;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.contact-title .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--black);
+  background: var(--grad);
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.contact-link {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  border: 1px solid var(--border2);
+  padding: 12px 20px;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.contact-link:hover { color: var(--white); border-color: var(--text-mid); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+
+  #hero, #strategist, #influencer, #cases, #reel, #skills, #testimonials, #contact {
+    padding: 80px 24px;
+  }
+
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .strategist-inner { grid-template-columns: 1fr; gap: 40px; }
+  .influencer-grid { grid-template-columns: 1fr; }
+  .reel-grid { grid-template-columns: 1fr; }
+  .reel-item.featured { grid-column: span 1; }
+  .reel-item.featured .reel-video { aspect-ratio: 9/16; }
+  .case { grid-template-columns: 1fr; gap: 32px; padding: 32px 28px; }
+  .case-metrics { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 28px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ORBS -->
+<div class="orb-container">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Julian Matti</a>
+  <ul class="nav-links">
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#reel">Content</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Make It Work</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Portfolio — Creative Strategy & Social Media</div>
+    <h1 class="hero-title">
+      The Work —<br>
+      <span class="accent">Strategy,</span><br>
+      Content &amp; Influence
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-name"><strong>Julian Matti</strong></div>
+      <div class="hero-divider"></div>
+      <div class="hero-role">Creative Strategist · Influencer Marketing · Paid Social</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIST -->
+<section id="strategist">
+  <div class="strategist-inner">
+    <div class="strategist-left reveal">
+      <div class="section-tag">The Strategist</div>
+      <h2 class="strategist-title">Built on Culture,<br>Driven by Data</h2>
+      <p class="strategist-body">
+        I'm a creative strategist and influencer marketing specialist with 6+ years building creator programs, running paid social campaigns, and driving measurable growth for sports, active lifestyle, fitness, martial arts, and F&B brands.
+      </p>
+      <p class="strategist-body">
+        I'm a lifelong sports fan, a Muay Thai practitioner, and a BJJ blue belt. Most sports brands are founded by athletes. <em>I speak their language.</em> That's not a talking point — it's the reason brands like ELOS Thermal trusted me to build their influencer infrastructure from the ground up.
+      </p>
+      <p class="strategist-body">
+        I don't just find influencers. I build the system that makes the right voices carry your message consistently.
+      </p>
+    </div>
+    <div class="strategist-right reveal">
+      <div class="credential">
+        <span class="credential-label">Creative Strategy Certification</span>
+        <span class="credential-value">Motion · 2026</span>
+      </div>
+      <div class="credential">
+        <span class="credential-label">Meta Ads Manager Certification</span>
+        <span class="credential-value">Meta · 2024</span>
+      </div>
+      <div class="credential">
+        <span class="credential-label">Meta Digital Marketing Associate</span>
+        <span class="credential-value">Meta · 2023</span>
+      </div>
+      <div class="credential">
+        <span class="credential-label">Data-Driven Marketing</span>
+        <span class="credential-value">Meta · 2024</span>
+      </div>
+      <div class="credential">
+        <span class="credential-label">AI-Powered Marketing</span>
+        <span class="credential-value">Semrush · 2025</span>
+      </div>
+      <div class="credential">
+        <span class="credential-label">Social Media Marketing</span>
+        <span class="credential-value">HubSpot · 2025</span>
+      </div>
+      <div class="credential">
+        <span class="credential-label">Make.com Automation</span>
+        <span class="credential-value">Make Academy · 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFLUENCER MARKETING -->
+<section id="influencer">
+  <div class="influencer-inner">
+    <div class="influencer-header reveal">
+      <div class="section-tag">Influencer Marketing</div>
+      <h2 class="influencer-title">Building the Machine,<br>Not Just the Campaign</h2>
+    </div>
+    <div class="influencer-grid">
+      <div class="inf-card reveal">
+        <div class="inf-icon">01</div>
+        <div class="inf-title">Ambassador Program Architecture</div>
+        <div class="inf-body">Built ELOS Thermal's tiered ambassador program — The Field Team — from scratch. Defined sourcing criteria, compensation structure, and a Notion-based partnership database to track outreach, deliverables, and performance across the full creator roster.</div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-icon">02</div>
+        <div class="inf-title">Creator Sourcing & Vetting</div>
+        <div class="inf-body">High-volume outreach pipelines contacting 25–50 creators per day. Built Google Sheets databases to track sourcing, vetting, and campaign coordination. Focus always on brand alignment, not just follower count.</div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-icon">03</div>
+        <div class="inf-title">Podcast Partnership Development</div>
+        <div class="inf-body">Re-engaged a dormant podcast relationship for ELOS Thermal and proposed a sponsorship that produced a single clip reaching 53,000+ views and 37,000+ likes — driving a 236% spike in monthly content interactions. Zero ad spend.</div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-icon">04</div>
+        <div class="inf-title">UGC Strategy & Direction</div>
+        <div class="inf-body">Directed UGC creators aligned with brand DNA across Instagram and TikTok. Ensured creative briefs maintained authentic brand voice while maximizing platform-native performance.</div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-icon">05</div>
+        <div class="inf-title">Performance Tracking & Reporting</div>
+        <div class="inf-body">Tracked partnership performance and ROI across creator campaigns to inform ongoing strategy and optimize budget allocation. Data-driven decisions at every stage of the creator lifecycle.</div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-icon">06</div>
+        <div class="inf-title">Community Building</div>
+        <div class="inf-body">Built brand communities around shared values, not just products. Identified niche communities aligned with each brand's actual customer profile and activated them through strategic creator partnerships.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="cases-inner">
+    <div class="cases-header reveal">
+      <div class="section-tag">Case Studies</div>
+      <h2 class="cases-title">The Work<br>Speaks</h2>
+    </div>
+    <div class="cases-list">
+
+      <div class="case reveal">
+        <div class="case-left">
+          <div class="case-brand">ELOS Thermal — Baltimore, MD</div>
+          <h3 class="case-title">Building a Brand's Voice From Scratch</h3>
+          <div class="case-context">Influencer Infrastructure · Podcast Partnerships · Ambassador Program</div>
+          <p class="case-narrative">
+            Anthony Dragisic — former Division I soccer player at Villanova — built a product for cold-weather athletes. The brand had a story worth telling but no infrastructure to tell it at scale. I built the entire influencer program from scratch: sourcing criteria, tiered ambassador structure, compensation framework, and a Notion-based partnership database. One re-engaged podcast relationship produced a single clip that changed the trajectory of the brand's social presence. Zero ad spend.
+          </p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">53K+</div>
+            <div class="metric-label">Views from one clip</div>
+            <div class="metric-note">+ 37,000+ likes</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">236%</div>
+            <div class="metric-label">Spike in monthly content interactions</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">135%</div>
+            <div class="metric-label">Increase in overall views</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case reveal">
+        <div class="case-left">
+          <div class="case-brand">FixZa — Whangarei, New Zealand</div>
+          <h3 class="case-title">Rescuing a Failing Campaign in 30 Days</h3>
+          <div class="case-context">Meta Ads · Paid Social · Pixel Infrastructure · Funnel Optimization</div>
+          <p class="case-narrative">
+            A home services startup entering the New Zealand market with no social presence, no pixel history, and a failing Meta campaign. I diagnosed the strategy, rebuilt it from scratch, installed and calibrated the Meta Pixel, restructured campaign objectives, and segmented audiences across two distinct customer profiles. Managed the entire campaign on NZD $582.69 and delivered results that exceeded industry benchmarks across every key metric.
+          </p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">2.6%</div>
+            <div class="metric-label">CTR achieved</div>
+            <div class="metric-note">vs. 0.9–1.9% industry benchmark</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">$0.31</div>
+            <div class="metric-label">CPC · 1,872 quality clicks</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">60–70%</div>
+            <div class="metric-label">Reduction in customer acquisition costs</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT REEL -->
+<section id="reel">
+  <div class="reel-inner">
+    <div class="reel-header reveal">
+      <div class="section-tag">Content</div>
+      <h2 class="reel-title">The Creative<br>In Action</h2>
+    </div>
+    <div class="reel-grid">
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/19pFsGOO39QE02V_wz0lZutN2DWVbWJS_/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">ELOS Thermal</div>
+          <div class="reel-desc">Product Launch Hype Reel</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Product Launch</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">Active Lifestyle</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/1n2yMngsmJz559xyKcFwD1oxpXWqNNcn5/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">Everything Bar</div>
+          <div class="reel-desc">UFC Legend Meet & Greet Event Coverage</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Event Coverage</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">UFC</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/1HgbJ-mMfhVEpEW2acMUzExib9-vF-54G/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">ELOS Thermal</div>
+          <div class="reel-desc">Educational Authority Reel</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Educational</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">TikTok</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/1OaZO4sc6RC_EE88qJUGgqiYOMxTQz4Pc/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">Everything Bar</div>
+          <div class="reel-desc">Chicago Bulls Preseason Highlight Reel</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Highlight Reel</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">NBA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/1zMuEbC0dC1Df4LYHFU87ZCWaif7VqcEL/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">Everything Bar</div>
+          <div class="reel-desc">UFC Event Hype Reel</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Hype Reel</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">Sports</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/1egRiJWRfCnWujma7nypgOR4TSKBcdjWe/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">V Boutique Aesthetics & Wellness</div>
+          <div class="reel-desc">Doctor-Led Educational Reel on Medical Aesthetics</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Educational</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">TikTok</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-item reveal">
+        <iframe class="reel-video" src="https://drive.google.com/file/d/11YwNXRpfEBoYep7NeWqRfeJdCFa8scID/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="reel-info">
+          <div class="reel-client">FixZa</div>
+          <div class="reel-desc">Paid Ad Reel — Meta Campaign</div>
+          <div class="reel-meta">
+            <span class="reel-tag">Paid Ad</span>
+            <span class="reel-tag">Instagram</span>
+            <span class="reel-tag">TikTok</span>
+            <span class="reel-tag">Meta Ads</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <div class="skills-header reveal">
+      <div class="section-tag">Skills & Tools</div>
+      <h2 class="skills-title">The Full Stack</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block reveal">
+        <div class="skill-block-title">Influencer & Creator Marketing</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Ambassador Program Architecture</span>
+          <span class="skill-tag">Creator Sourcing & Vetting</span>
+          <span class="skill-tag">UGC Strategy</span>
+          <span class="skill-tag">Partnership Database Management</span>
+          <span class="skill-tag">Campaign Coordination</span>
+          <span class="skill-tag">Performance Tracking</span>
+          <span class="skill-tag">High-Volume Outreach</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <div class="skill-block-title">Paid & Organic Social</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Meta Ads Manager</span>
+          <span class="skill-tag">Campaign Strategy</span>
+          <span class="skill-tag">Audience Segmentation</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Meta Pixel Installation</span>
+          <span class="skill-tag">Conversion Optimization</span>
+          <span class="skill-tag">Budget Management</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <div class="skill-block-title">Content & Creative</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Content Strategy</span>
+          <span class="skill-tag">Short-Form Video</span>
+          <span class="skill-tag">Reel Production</span>
+          <span class="skill-tag">Brand Voice Development</span>
+          <span class="skill-tag">Content Calendar Management</span>
+          <span class="skill-tag">SEO Copywriting</span>
+          <span class="skill-tag">Platform-Specific Creative</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <div class="skill-block-title">Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">GoHighLevel</span>
+          <span class="skill-tag highlight">Make.com</span>
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Google Sheets</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Meta Business Suite</span>
+          <span class="skill-tag">WordPress</span>
+          <span class="skill-tag">Scheduling Tools</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header reveal">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="testimonials-title">What They Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">
+          Julian is a true joy to work with, mainly because of his attention to detail and desire to do it the right way. I never saw Julian cut any corners and always admired his work ethic.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">CP</div>
+          <div>
+            <div class="author-name">Chase Pickett</div>
+            <div class="author-title">CEO · Precision Social</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">
+          Julian is a pleasure to work with and could not be any more genuine. Julian truly does work hard and is incredibly diligent.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">GB</div>
+          <div>
+            <div class="author-name">Gabriel Burch</div>
+            <div class="author-title">Digital Marketing</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">
+          Julian went above and beyond for ELOS during his time with the company. On top of always delivering work on time, with quality, and with consistent brand alignment, he aided in strategy for the broader social media and influencer strategy for the brand. His contribution in the early stages of our growth cannot be understated. Truly a pleasure to work with and could not recommend highly enough for any paid and organic social media support and influencer strategy.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">AD</div>
+          <div>
+            <div class="author-name">Anthony Dragisics</div>
+            <div class="author-title">Co-Founder · ELOS Thermal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <div class="contact-tag">Get In Touch</div>
+    <h2 class="contact-title">
+      Let's Make<br>
+      <span class="accent">It Work</span>
+    </h2>
+    <p class="contact-sub">
+      If you're building something worth believing in and need the right voices carrying your message, let's talk.
+    </p>
+    <div class="contact-actions">
+      <a href="mailto:julianlmatti@gmail.com" class="btn-primary">Email Me</a>
+      <a href="https://linkedin.com/in/julian-matti-76973a199" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="index.html" class="contact-link">Main Site</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Julian Matti</div>
+  <div class="footer-copy">© 2026 Julian Matti · Creative Strategist</div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
