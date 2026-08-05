@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julian Matti — Creative Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #080808;
+  --surface:    #0F0F0F;
+  --surface2:   #131313;
+  --border:     #1C1C1C;
+  --border2:    #2A2A2A;
+  --text-dim:   #2E2E2E;
+  --text-mid:   #555;
+  --text-body:  #888;
+  --text-main:  #E0E0E0;
+  --white:      #F0F0F0;
+  --gold:       #E8A838;
+  --rose:       #D4607A;
+  --grad:       linear-gradient(135deg, #E8A838 0%, #D4607A 100%);
+  --grad-text:  linear-gradient(135deg, #E8A838 0%, #D4607A 100%);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── ANIMATED GRADIENT ORBS ── */
+.orb-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+}
+
+.orb-1 {
+  width: 600px; height: 600px;
+  left: -15%; top: -10%;
+  background: radial-gradient(ellipse, rgba(232,168,56,0.09) 0%, transparent 70%);
+  animation: orbFloat 1s 0.2s ease forwards, drift1 18s 1.2s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  width: 500px; height: 500px;
+  right: -10%; top: 20%;
+  background: radial-gradient(ellipse, rgba(212,96,122,0.07) 0%, transparent 70%);
+  animation: orbFloat 1s 0.5s ease forwards, drift2 22s 1.5s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+  width: 400px; height: 400px;
+  left: 30%; bottom: 5%;
+  background: radial-gradient(ellipse, rgba(232,168,56,0.05) 0%, transparent 70%);
+  animation: orbFloat 1s 0.8s ease forwards, drift3 26s 1.8s ease-in-out infinite alternate;
+}
+
+.orb-4 {
+  width: 350px; height: 350px;
+  left: 60%; top: 55%;
+  background: radial-gradient(ellipse, rgba(212,96,122,0.05) 0%, transparent 70%);
+  animation: orbFloat 1s 1s ease forwards, drift4 20s 2s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, 80px) scale(1.15); }
+}
+
+@keyframes drift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-80px, 60px) scale(1.1); }
+}
+
+@keyframes drift3 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, -60px) scale(1.2); }
+}
+
+@keyframes drift4 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-50px, -40px) scale(1.08); }
+}
+
+/* ── UTILITIES ── */
+.grad-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-tag {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.section-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── SECTION Z-INDEX ── */
+nav, #hero, #problem, #work, #testimonials, #fit, #contact, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+nav.scrolled {
+  background: rgba(8,8,8,0.95);
+  border-color: var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 8px 18px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow-1 {
+  position: absolute;
+  width: 600px; height: 600px;
+  left: -200px; top: -100px;
+  background: radial-gradient(ellipse, rgba(232,168,56,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  right: 0; bottom: 0;
+  background: radial-gradient(ellipse, rgba(212,96,122,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+
+.hero-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 7vw, 96px);
+  letter-spacing: 1px;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-headline .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 520px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.hero-sub em {
+  color: var(--text-main);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+
+.btn-primary {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--black);
+  background: var(--grad);
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-ghost {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-body);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.btn-ghost:hover { color: var(--white); }
+.btn-ghost::after { content: '→'; transition: transform 0.2s; }
+.btn-ghost:hover::after { transform: translateX(4px); }
+
+/* Hero photo */
+.hero-photo {
+  animation: fadeUp 0.9s 0.35s ease both;
+}
+
+.hero-photo-frame {
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  aspect-ratio: 3/4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.hero-photo-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.photo-placeholder svg {
+  width: 48px; height: 48px;
+  opacity: 0.15;
+  color: var(--white);
+}
+
+.photo-placeholder span {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Hero stats */
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin-top: 56px;
+  animation: fadeUp 0.8s 0.6s ease both;
+}
+
+.stat {
+  background: var(--black);
+  padding: 20px 24px;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 9.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  font-weight: 300;
+}
+
+/* ── PROBLEM ── */
+#problem {
+  padding: 120px 48px;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.problem-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.problem-left { position: sticky; top: 120px; }
+
+.problem-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 160px;
+  line-height: 1;
+  color: var(--surface2);
+  letter-spacing: -4px;
+  user-select: none;
+}
+
+.problem-statements {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.problem-line {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.problem-line:first-child { border-top: 1px solid var(--border); }
+
+.problem-idx {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  padding-top: 6px;
+  width: 28px;
+}
+
+.problem-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(22px, 3vw, 36px);
+  line-height: 1.2;
+  color: var(--text-body);
+  font-style: italic;
+}
+
+.problem-text.bold {
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: normal;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: var(--white);
+}
+
+.problem-text.highlight {
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: normal;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.problem-close {
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--text-mid);
+  font-style: italic;
+  font-family: 'Instrument Serif', serif;
+  letter-spacing: 0.3px;
+}
+
+/* ── CASE STUDIES ── */
+#work {
+  padding: 120px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.work-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.work-header {
+  margin-bottom: 64px;
+}
+
+.work-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.case-studies {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.case {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 48px 52px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+  border-radius: 8px;
+}
+
+.case::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+
+.case:hover { border-color: var(--border2); }
+.case:hover::before { background: var(--grad); }
+
+.case-brand {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.case-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3.5vw, 46px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
+
+.case-context {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.case-narrative {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.case-metrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding-left: 48px;
+  border-left: 1px solid var(--border);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  font-weight: 300;
+}
+
+.metric-note {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── TESTIMONIALS ── */
+#testimonials {
+  padding: 120px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonials-header {
+  margin-bottom: 56px;
+}
+
+.testimonials-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.testimonial {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  transition: border-color 0.3s;
+  border-radius: 8px;
+}
+
+.testimonial:hover { border-color: var(--border2); }
+
+.testimonial-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.65;
+  color: var(--text-main);
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonial-quote::before {
+  content: '"';
+  font-size: 48px;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.4;
+  display: block;
+  margin-bottom: 12px;
+  font-family: 'Instrument Serif', serif;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.author-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.author-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.author-title {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  font-weight: 300;
+}
+
+.testimonial-incoming {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border-radius: 8px;
+}
+
+.incoming-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* ── FIT ── */
+#fit {
+  padding: 120px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.fit-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.fit-header {
+  grid-column: 1 / -1;
+  margin-bottom: 48px;
+}
+
+.fit-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.fit-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px 44px;
+  border-radius: 8px;
+}
+
+.fit-col-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.fit-col-label.yes { color: var(--gold); }
+.fit-col-label.no { color: var(--text-mid); }
+
+.fit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fit-list li {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.6;
+  font-weight: 300;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.fit-list li::before {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+.fit-col.yes-col .fit-list li::before {
+  content: '→';
+  color: var(--gold);
+}
+
+.fit-col.no-col .fit-list li::before {
+  content: '×';
+  color: var(--text-dim);
+}
+
+/* ── CONTACT ── */
+#contact {
+  padding: 120px 48px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(232,168,56,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-tag {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contact-tag::before,
+.contact-tag::after {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+
+.contact-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 96px);
+  letter-spacing: 1px;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.contact-title .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto 48px;
+}
+
+.contact-expect {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 36px 40px;
+  margin-bottom: 40px;
+  text-align: left;
+  border-radius: 8px;
+}
+
+.expect-title {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+
+.expect-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expect-list li {
+  font-size: 13.5px;
+  color: var(--text-body);
+  font-weight: 300;
+  line-height: 1.6;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.expect-list li::before {
+  content: '·';
+  color: var(--gold);
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  border: 1px solid var(--border2);
+  padding: 10px 20px;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.contact-link:hover {
+  color: var(--white);
+  border-color: var(--text-mid);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+
+  #hero { padding: 100px 24px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo { order: -1; max-width: 280px; margin: 0 auto; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+
+  #problem { padding: 80px 24px; }
+  .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+  .problem-number { font-size: 100px; }
+
+  #work { padding: 80px 24px; }
+  .case { grid-template-columns: 1fr; gap: 32px; padding: 32px 28px; }
+  .case-metrics { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 28px; flex-direction: row; flex-wrap: wrap; gap: 20px; }
+
+  #testimonials { padding: 80px 24px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  #fit { padding: 80px 24px; }
+  .fit-inner { grid-template-columns: 1fr; }
+
+  #contact { padding: 80px 24px; }
+
+  footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- AMBIENT GRADIENT ORBS -->
+<div class="orb-container">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Julian Matti</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#fit">Who I Work With</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Make It Work</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Creative Strategist — Sports & Active Lifestyle</div>
+      <h1 class="hero-headline">
+        I Help Brands<br>
+        <span class="accent">WIN</span><br>
+        Social Media
+      </h1>
+      <p class="hero-sub">
+        Most brands post. Few connect. I match sports and active lifestyle brands with the <em>exact voices their audience already trusts</em> — built by someone who lives the culture, not just studies it.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Let's Make It Work</a>
+        <a href="#work" class="btn-ghost">See the Work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">236%</div>
+          <div class="stat-label">Spike in Content Interactions</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">53K+</div>
+          <div class="stat-label">Views from One Clip</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2.6%</div>
+          <div class="stat-label">CTR vs 0.9–1.9% Benchmark</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">60–70%</div>
+          <div class="stat-label">Reduction in CAC</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>Photo Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="problem-inner">
+    <div class="problem-left reveal">
+      <div class="section-tag">The Problem</div>
+      <div class="problem-number">01</div>
+    </div>
+    <div class="problem-statements">
+      <div class="problem-line reveal">
+        <span class="problem-idx">—</span>
+        <span class="problem-text">Every founder has a story worth telling.</span>
+      </div>
+      <div class="problem-line reveal">
+        <span class="problem-idx">—</span>
+        <span class="problem-text bold">Most never reach the right people.</span>
+      </div>
+      <div class="problem-line reveal">
+        <span class="problem-idx">—</span>
+        <span class="problem-text">Not because the product isn't good.</span>
+      </div>
+      <div class="problem-line reveal">
+        <span class="problem-idx">—</span>
+        <span class="problem-text highlight">Because the voices carrying the message don't speak the same language.</span>
+      </div>
+      <p class="problem-close reveal">That's the gap I close.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="work-inner">
+    <div class="work-header reveal">
+      <div class="section-tag">Case Studies</div>
+      <h2 class="work-title">The Work<br>Speaks</h2>
+    </div>
+    <div class="case-studies">
+
+      <!-- ELOS -->
+      <div class="case reveal">
+        <div class="case-left">
+          <div class="case-brand">ELOS Thermal — Baltimore, MD</div>
+          <h3 class="case-title">Building a Brand's Voice From Scratch</h3>
+          <div class="case-context">Influencer Infrastructure · Podcast Partnerships · Ambassador Program</div>
+          <p class="case-narrative">
+            Anthony Dragisic — former Division I soccer player at Villanova — built a product for cold-weather athletes. The brand had a story worth telling but no infrastructure to tell it at scale. I built the entire influencer program from scratch: sourcing criteria, tiered ambassador structure, compensation framework, and a Notion-based partnership database. One re-engaged podcast relationship produced a single clip that changed the trajectory of the brand's social presence. Zero ad spend.
+          </p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">53K+</div>
+            <div class="metric-label">Views from one clip</div>
+            <div class="metric-note">+ 37,000+ likes</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">236%</div>
+            <div class="metric-label">Spike in monthly content interactions</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">135%</div>
+            <div class="metric-label">Increase in overall views</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FixZa -->
+      <div class="case reveal">
+        <div class="case-left">
+          <div class="case-brand">FixZa — Whangarei, New Zealand</div>
+          <h3 class="case-title">Rescuing a Failing Campaign in 30 Days</h3>
+          <div class="case-context">Meta Ads · Paid Social · Pixel Infrastructure · Funnel Optimization</div>
+          <p class="case-narrative">
+            A home services startup entering the New Zealand market with no social presence, no pixel history, and a failing Meta campaign. I diagnosed the strategy, rebuilt it from scratch, installed and calibrated the Meta Pixel, restructured campaign objectives, and segmented audiences across two distinct customer profiles. Managed the entire campaign on NZD $582.69 and delivered results that exceeded industry benchmarks across every key metric.
+          </p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">2.6%</div>
+            <div class="metric-label">CTR achieved</div>
+            <div class="metric-note">vs. 0.9–1.9% industry benchmark</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">$0.31</div>
+            <div class="metric-label">CPC · 1,872 quality clicks</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">60–70%</div>
+            <div class="metric-label">Reduction in customer acquisition costs</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header reveal">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="testimonials-title">What They Say</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">
+          Julian is a true joy to work with, mainly because of his attention to detail and desire to do it the right way. I never saw Julian cut any corners and always admired his work ethic.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">CP</div>
+          <div>
+            <div class="author-name">Chase Pickett</div>
+            <div class="author-title">CEO · Precision Social</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">
+          Julian is a pleasure to work with and could not be any more genuine. Julian truly does work hard and is incredibly diligent.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">GB</div>
+          <div>
+            <div class="author-name">Gabriel Burch</div>
+            <div class="author-title">Digital Marketing</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-incoming reveal">
+        <div class="incoming-label">More testimonials incoming</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section id="fit">
+  <div class="fit-inner">
+    <div class="fit-header reveal">
+      <div class="section-tag">Who I Work With</div>
+      <h2 class="fit-title">Right Fit.<br>Wrong Fit.</h2>
+    </div>
+    <div class="fit-col yes-col reveal">
+      <div class="fit-col-label yes">Right fit if</div>
+      <ul class="fit-list">
+        <li>You're a founder who IS the brand</li>
+        <li>You operate in sports, active lifestyle, performance culture, fitness, martial arts, or food and beverage</li>
+        <li>You believe in the power of the right voices over the loudest ones</li>
+        <li>You want a strategist who lives the culture, not just markets it</li>
+        <li>You're ready to build something that compounds, not just posts</li>
+      </ul>
+    </div>
+    <div class="fit-col no-col reveal">
+      <div class="fit-col-label no">Not a fit if</div>
+      <ul class="fit-list">
+        <li>You need a content farm, not a strategy</li>
+        <li>Your brand has no clear identity or values yet</li>
+        <li>You want guaranteed overnight results</li>
+        <li>You're looking for someone to execute without thinking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <div class="contact-tag">Let's Work Together</div>
+    <h2 class="contact-title">
+      Let's Make<br>
+      <span class="accent">It Work</span>
+    </h2>
+    <p class="contact-sub">
+      If you're building something worth believing in and need the right voices carrying your message, let's talk.
+    </p>
+    <div class="contact-expect reveal">
+      <div class="expect-title">What to Expect</div>
+      <ul class="expect-list">
+        <li>30 minute introductory call — no pitch, no slides</li>
+        <li>You tell me the challenge, I tell you how I'd approach it</li>
+        <li>If we're a fit, I'll send a clear scope within 24 hours</li>
+      </ul>
+    </div>
+    <div class="contact-actions">
+      <a href="mailto:julianlmatti@gmail.com" class="btn-primary">Email Me</a>
+      <a href="https://linkedin.com/in/julian-matti-76973a199" target="_blank" class="contact-link">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Julian Matti</div>
+  <div class="footer-copy">© 2026 Julian Matti · Creative Strategist</div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
