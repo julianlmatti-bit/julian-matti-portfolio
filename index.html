@@ -1,0 +1,4191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JBM Field Manual // Julian Matti — Creative Strategist</title>
+<meta name="description" content="Julian Matti is a Creative Strategist and Influencer Marketing specialist helping sports, active lifestyle, fitness, and F&B brands build systems that get heard by the right people.">
+<meta property="og:title" content="JBM Field Manual // Julian Matti — Creative Strategist">
+<meta property="og:description" content="Strategy. Content. Influence. Built for brands that compete.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#080808">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #080808;
+  --surface:    #0D0D0D;
+  --surface2:   #111111;
+  --surface3:   #161616;
+  --border:     #1A1A1A;
+  --border2:    #242424;
+  --border3:    #2E2E2E;
+  --text-dim:   #252525;
+  --text-low:   #3A3A3A;
+  --text-mid:   #555;
+  --text-body:  #888;
+  --text-main:  #C8C8C8;
+  --white:      #EDEDED;
+  --gold:       #E8A838;
+  --rose:       #D4607A;
+  --cyan:       #4ECDC4;
+  --grad:       linear-gradient(135deg, #E8A838 0%, #D4607A 100%);
+  --grad-r:     linear-gradient(135deg, #D4607A 0%, #E8A838 100%);
+  --mono:       'Share Tech Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ── GRAIN ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── SCANLINES ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* ── ORBS ── */
+.orb-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0;
+}
+
+.orb-1 {
+  width: 700px; height: 700px;
+  left: -20%; top: -15%;
+  background: radial-gradient(ellipse, rgba(232,168,56,0.07) 0%, transparent 70%);
+  animation: orbFloat 1s 0.3s ease forwards, drift1 20s 1.3s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  width: 600px; height: 600px;
+  right: -15%; top: 25%;
+  background: radial-gradient(ellipse, rgba(212,96,122,0.06) 0%, transparent 70%);
+  animation: orbFloat 1s 0.6s ease forwards, drift2 24s 1.6s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+  width: 400px; height: 400px;
+  left: 35%; bottom: 10%;
+  background: radial-gradient(ellipse, rgba(78,205,196,0.03) 0%, transparent 70%);
+  animation: orbFloat 1s 0.9s ease forwards, drift3 28s 1.9s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drift1 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(80px,100px) scale(1.1); }
+}
+
+@keyframes drift2 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(-100px,80px) scale(1.15); }
+}
+
+@keyframes drift3 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(60px,-80px) scale(1.2); }
+}
+
+/* ── Z-INDEX ── */
+nav, section, footer { position: relative; z-index: 1; }
+
+/* ── UTILITIES ── */
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mono { font-family: var(--mono); }
+
+.file-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-low);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-tag::before {
+  content: '//';
+  color: var(--text-low);
+}
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+  margin-right: 6px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,168,56,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(232,168,56,0); }
+}
+
+.corner-bracket {
+  position: absolute;
+  width: 16px; height: 16px;
+}
+
+.corner-bracket::before,
+.corner-bracket::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.corner-bracket.tl { top: 0; left: 0; }
+.corner-bracket.tl::before { width: 100%; height: 1px; top: 0; left: 0; }
+.corner-bracket.tl::after  { width: 1px; height: 100%; top: 0; left: 0; }
+
+.corner-bracket.tr { top: 0; right: 0; }
+.corner-bracket.tr::before { width: 100%; height: 1px; top: 0; right: 0; }
+.corner-bracket.tr::after  { width: 1px; height: 100%; top: 0; right: 0; left: auto; }
+
+.corner-bracket.bl { bottom: 0; left: 0; }
+.corner-bracket.bl::before { width: 100%; height: 1px; bottom: 0; left: 0; top: auto; }
+.corner-bracket.bl::after  { width: 1px; height: 100%; bottom: 0; left: 0; top: auto; }
+
+.corner-bracket.br { bottom: 0; right: 0; }
+.corner-bracket.br::before { width: 100%; height: 1px; bottom: 0; right: 0; top: auto; }
+.corner-bracket.br::after  { width: 1px; height: 100%; bottom: 0; right: 0; left: auto; top: auto; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── HERO GLYPHS ── */
+.glyph-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
+
+.glyph {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  opacity: 0;
+  user-select: none;
+  animation: glyphFade var(--dur) var(--delay) ease-in-out infinite;
+}
+
+@keyframes glyphFade {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 0.22; }
+  80%  { opacity: 0.14; }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--black);
+  background: var(--grad);
+  padding: 12px 24px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  transition: opacity 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-ghost {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 12px 24px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  transition: all 0.2s;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn-ghost:hover { background: rgba(232,168,56,0.08); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+nav.scrolled {
+  background: rgba(8,8,8,0.96);
+  border-color: var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.nav-mark {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 4px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  border: 1px solid rgba(232,168,56,0.4);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover { border-color: var(--gold); background: rgba(232,168,56,0.06); }
+
+/* ── HERO / BRIEFING ── */
+#briefing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 48px 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.briefing-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.briefing-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.jbm-mark {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--black);
+  font-weight: bold;
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(232,168,56,0.25);
+}
+
+.briefing-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.briefing-file {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--text-low);
+}
+
+.briefing-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+}
+
+.briefing-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 80px;
+  align-items: center;
+}
+
+.briefing-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 112px);
+  letter-spacing: 1px;
+  line-height: 0.88;
+  color: var(--white);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.briefing-headline .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.briefing-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 520px;
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.briefing-sub em {
+  color: var(--text-main);
+  font-style: normal;
+}
+
+.briefing-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+
+/* Video frame */
+.video-frame {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+
+.video-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+  z-index: 1;
+}
+
+.video-frame-header {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.video-frame-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+.video-frame-dot.r { background: #FF5F57; }
+.video-frame-dot.y { background: #FEBC2E; }
+.video-frame-dot.g { background: #28C840; }
+
+.video-frame-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+  margin-left: 8px;
+}
+
+.video-placeholder {
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--surface);
+}
+
+.hero-photo-section {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--surface2);
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+  transition: filter 0.4s ease;
+}
+
+.hero-photo-section:hover .hero-photo-img {
+  filter: grayscale(0%) contrast(1.05);
+}
+
+.hero-photo-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 20px 16px;
+  background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hero-photo-name {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+
+.hero-photo-role {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.video-placeholder-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder-icon svg {
+  width: 20px; height: 20px;
+  opacity: 0.3;
+  fill: var(--gold);
+}
+
+.video-placeholder-text {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+}
+
+/* Stats row */
+.briefing-stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 56px;
+  border-radius: 6px;
+  overflow: hidden;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+
+.bstat {
+  background: var(--black);
+  padding: 20px 24px;
+}
+
+.bstat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 34px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.bstat-label {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* ── OPERATIVE PROFILE ── */
+#profile {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.profile-left {}
+
+.profile-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 28px;
+}
+
+.profile-body {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.profile-body em {
+  color: var(--text-main);
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Character sheet */
+.char-sheet {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.char-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.char-sheet-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-sheet-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.char-sheet-status {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.char-sheet-status::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 2s infinite;
+}
+
+.char-rows {
+  padding: 8px 0;
+}
+
+.char-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.char-row:last-child { border-bottom: none; }
+
+.char-key {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.char-val {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+.char-val.accent { color: var(--gold); }
+.char-val.cyan { color: var(--cyan); }
+
+.char-sheet-footer {
+  padding: 12px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.char-footer-item {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--text-low);
+}
+
+/* ── WHAT IS SMM ── */
+#discipline {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.discipline-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.discipline-header {
+  margin-bottom: 64px;
+}
+
+.discipline-question {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.discipline-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5.5vw, 72px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.92;
+  margin-bottom: 20px;
+}
+
+.discipline-body {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 680px;
+}
+
+.discipline-why {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 1;
+  margin: 56px 0 48px;
+  text-align: center;
+}
+
+.discipline-why .accent { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+  margin-bottom: 48px;
+}
+
+.problem-card {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.problem-card:hover { border-color: var(--border3); }
+
+.problem-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--rose);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.problem-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.problem-body {
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.solution-card {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.solution-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.solution-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.solution-body {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 640px;
+}
+
+/* ── FIELD OPERATIONS (Services) ── */
+#operations {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.operations-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.operations-header {
+  margin-bottom: 56px;
+}
+
+.operations-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+
+.svc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+
+.svc-card:hover { border-color: var(--border2); }
+.svc-card:hover::before { background: var(--grad); }
+
+.svc-code {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.svc-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+.svc-body {
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+
+.svc-type {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+  border: 1px solid var(--border2);
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* ── EXTENDED CAPABILITIES ── */
+#capabilities {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.capabilities-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.capabilities-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 2px;
+}
+
+.cap-card {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 32px 36px;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.cap-card:hover { border-color: var(--border2); }
+
+.cap-code {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--text-mid);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.cap-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.cap-body {
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.cap-type {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  margin-top: 12px;
+  display: block;
+}
+
+/* ── CAMPAIGN FRAMEWORK ── */
+#framework {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.framework-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.framework-header {
+  margin-bottom: 16px;
+}
+
+.framework-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
+
+.framework-sub {
+  font-size: 14px;
+  color: var(--text-body);
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+.phases {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.phase {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 28px 36px;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 80px 200px 1fr;
+  gap: 32px;
+  align-items: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.phase:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+
+.phase-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.phase-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.phase-desc {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── PLATFORMS ── */
+#platforms {
+  padding: 80px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.platforms-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.platforms-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 40px;
+  line-height: 0.95;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 2px;
+}
+
+.platform-item {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 24px 16px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.3s;
+}
+
+.platform-item:hover { border-color: var(--border2); }
+
+.platform-name {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+  text-align: center;
+}
+
+.platform-icon {
+  width: 28px; height: 28px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.platform-item:hover .platform-icon { opacity: 1; }
+
+/* ── SYSTEMS ── */
+#systems {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.systems-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.systems-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+
+.sys-dept {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 28px 28px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sys-dept::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+  opacity: 0.4;
+}
+
+.sys-dept-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.sys-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sys-tool {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sys-tool::before {
+  content: '>';
+  color: var(--text-low);
+  font-size: 9px;
+}
+
+.sys-tool.primary { color: var(--text-main); }
+.sys-tool.primary::before { color: var(--gold); }
+
+/* ── MISSION LOGS (Case Studies) ── */
+#missions {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.missions-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.missions-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.mission-logs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mission-log {
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.mission-log:hover { border-color: var(--border2); }
+
+.mission-header {
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mission-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mission-badge {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.mission-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.3px;
+}
+
+.mission-client {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+  margin-top: 2px;
+}
+
+.mission-toggle {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.mission-toggle .arrow {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.mission-log.open .mission-toggle .arrow {
+  transform: rotate(90deg);
+}
+
+.mission-body {
+  display: none;
+  padding: 0 28px 28px;
+  border-top: 1px solid var(--border);
+}
+
+.mission-log.open .mission-body { display: block; }
+
+.mission-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+.mission-section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.mission-section-body {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.mission-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mission-metric-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.mission-metric-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--text-mid);
+  margin-top: 2px;
+}
+
+.mission-metric-note {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-low);
+  margin-top: 1px;
+}
+
+/* ── FIELD FOOTAGE ── */
+#footage {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footage-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footage-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.footage-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px;
+}
+
+.footage-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.footage-item:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+
+.footage-video {
+  width: 100%;
+  aspect-ratio: 9/16;
+  border: none;
+  display: block;
+  background: var(--surface2);
+}
+
+.footage-info {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+}
+
+.footage-client {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.footage-desc {
+  font-size: 12px;
+  color: var(--text-body);
+  font-weight: 300;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.footage-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.footage-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--text-low);
+  border: 1px solid var(--border2);
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+/* ── INTEL (Testimonials) ── */
+#intel {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.intel-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.intel-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.intel-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+
+.intel-card {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.3s;
+}
+
+.intel-card:hover { border-color: var(--border2); }
+
+.intel-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(13px, 1.4vw, 16px);
+  line-height: 1.7;
+  color: var(--text-main);
+  font-style: italic;
+  flex: 1;
+}
+
+.intel-quote::before {
+  content: '"';
+  font-size: 40px;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.35;
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Instrument Serif', serif;
+}
+
+.intel-source {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.intel-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.intel-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.intel-role {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--text-mid);
+}
+
+/* ── CERTIFICATIONS ── */
+#certs {
+  padding: 80px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.certs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.certs-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 40px;
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+
+.cert-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+
+.cert-item:hover { border-color: var(--border2); }
+
+.cert-name {
+  font-size: 12.5px;
+  color: var(--text-body);
+  font-weight: 300;
+}
+
+.cert-issuer {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-align: right;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+/* ── DEPLOYMENT PACKAGES ── */
+#packages {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.packages-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.packages-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+
+.pkg-card {
+  background: var(--black);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.pkg-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+
+.pkg-card:hover { border-color: var(--border2); }
+.pkg-card:hover::before { background: var(--grad); }
+
+.pkg-card.featured {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+
+.pkg-card.featured::before { background: var(--grad); }
+
+.pkg-code {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.pkg-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.pkg-desc {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  flex: 1;
+}
+
+.pkg-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pkg-items li {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--text-body);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.pkg-items li::before {
+  content: '>';
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── FAQ ── */
+#faq {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 56px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.faq-question:hover { background: var(--surface2); }
+
+.faq-q-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.2px;
+}
+
+.faq-arrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--gold);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-arrow { transform: rotate(90deg); }
+
+.faq-answer {
+  display: none;
+  padding: 0 24px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.faq-item.open .faq-answer { display: block; }
+
+.faq-answer p {
+  font-size: 13.5px;
+  color: var(--text-body);
+  line-height: 1.8;
+  font-weight: 300;
+  padding-top: 16px;
+}
+
+/* ── OPEN CHANNEL (Contact) ── */
+#channel {
+  padding: 120px 48px;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.channel-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  background: radial-gradient(ellipse, rgba(232,168,56,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.channel-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.channel-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.channel-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.channel-tag::before,
+.channel-tag::after {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+.channel-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 88px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.88;
+  margin-bottom: 20px;
+}
+
+.channel-title .accent {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.channel-sub {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Form */
+.contact-form {
+  background: var(--black);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.form-header {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--text-low);
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-status {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-status::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 2s infinite;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field.full { grid-column: 1 / -1; }
+
+.form-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+  text-transform: uppercase;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-main);
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--gold);
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.form-select option { background: var(--surface2); }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 8px;
+}
+
+#fs-success {
+  display: none;
+  text-align: center;
+  padding: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+}
+
+#fs-error {
+  display: none;
+  text-align: center;
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--rose);
+}
+
+.channel-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.channel-link {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+  text-decoration: none;
+  border: 1px solid var(--border2);
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.channel-link:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── PLATFORMS EXTENDED ── */
+.platforms-sub {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.platform-grid-extended {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2px;
+}
+
+.platform-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.platform-card:hover { border-color: var(--border2); }
+
+.platform-icon-lg {
+  width: 36px; height: 36px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.platform-card:hover .platform-icon-lg { opacity: 1; }
+
+.platform-card-name {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.platform-card-desc {
+  font-size: 11.5px;
+  color: var(--text-body);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── SYSTEMS ORG CHART ── */
+.systems-sub {
+  font-size: 14px;
+  color: var(--text-body);
+  font-weight: 300;
+  max-width: 600px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.sys-org {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.sys-master {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 32px 40px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sys-master::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.sys-master-badge {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--black);
+  font-weight: bold;
+  margin: 0 auto 12px;
+  box-shadow: 0 0 20px rgba(232,168,56,0.25);
+}
+
+.sys-master-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--text-mid);
+  margin-bottom: 4px;
+}
+
+.sys-master-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.sys-master-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.sys-master-desc {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.sys-master-tools {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sys-icon-tool {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-body);
+}
+
+.sys-icon-tool img {
+  width: 16px; height: 16px;
+  object-fit: contain;
+}
+
+.sys-icon-tool.primary { color: var(--gold); }
+
+.sys-connector {
+  width: 2px;
+  height: 32px;
+  background: var(--border2);
+  margin: 0 auto;
+}
+
+.sys-depts {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 2px;
+  width: 100%;
+  border-top: 1px solid var(--border2);
+  padding-top: 32px;
+}
+
+.sys-dept-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sys-dept-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.sys-dept-code {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sys-dept-name {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.sys-dept-desc {
+  font-size: 11px;
+  color: var(--text-body);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.sys-sub {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sys-sub:last-child { border-bottom: none; }
+
+.sys-sub-label {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+  margin-bottom: 6px;
+}
+
+.sys-footer-bar {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.sys-footer-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+}
+
+.sys-footer-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+}
+
+/* ── ORGANIC VS PAID ── */
+#orgvspaid {
+  padding: 120px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.ovp-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ovp-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 48px;
+}
+
+.ovp-master {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.ovp-master-box {
+  background: var(--black);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 28px 36px;
+  text-align: center;
+  max-width: 560px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ovp-master-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.ovp-master-badge {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--black);
+  font-weight: bold;
+  margin: 0 auto 10px;
+}
+
+.ovp-master-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--text-mid);
+  margin-bottom: 4px;
+}
+
+.ovp-master-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.ovp-master-role {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.ovp-master-desc {
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.ovp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border-top: 2px solid var(--border2);
+  padding-top: 32px;
+  margin-top: 0;
+}
+
+.ovp-col {
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px 28px;
+}
+
+.ovp-col-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.ovp-col-desc {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.ovp-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.ovp-item {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-body);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+
+.ovp-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.ovp-tag {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  border: 1px solid rgba(232,168,56,0.3);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.ovp-hybrid {
+  margin-top: 28px;
+  background: var(--black);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 28px 32px;
+  border-left: 3px solid var(--gold);
+}
+
+.ovp-hybrid-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.ovp-hybrid-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.ovp-hybrid-sub {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── FRAMEWORK ANIMATION ── */
+.phase {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, background 0.3s;
+}
+
+.phase.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── RESPONSIVE ADDITIONS ── */
+@media (max-width: 900px) {
+  .platform-grid-extended { grid-template-columns: repeat(2,1fr); }
+  .sys-depts { grid-template-columns: 1fr; }
+  .ovp-grid { grid-template-columns: 1fr; }
+  #orgvspaid { padding: 80px 24px; }
+}
+
+/* ── GLOBAL FONT SIZE FIXES ── */
+.profile-body { font-size: 16px; }
+.svc-body { font-size: 14px; }
+.cap-body { font-size: 14px; }
+.phase-desc { font-size: 15px; }
+.problem-body { font-size: 14px; }
+.solution-body { font-size: 15px; }
+.discipline-body { font-size: 16px; }
+.briefing-sub { font-size: 17px; }
+.mission-section-body { font-size: 14px; }
+.intel-quote { font-size: 15px; }
+.ovp-col-desc { font-size: 14px; }
+.ovp-hybrid-text { font-size: 17px; }
+.ovp-hybrid-sub { font-size: 14px; }
+.pkg-desc { font-size: 14px; }
+.pkg-items li { font-size: 13px; }
+.faq-q-text { font-size: 15px; }
+.faq-answer p { font-size: 14px; }
+.channel-sub { font-size: 15px; }
+.platforms-sub { font-size: 15px; }
+.platform-card-desc { font-size: 13px; }
+.lv-dept-desc { font-size: 14px; }
+.sys-master-desc { font-size: 14px; }
+
+/* ── LV SYSTEMS LAYOUT ── */
+.systems-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  font-weight: 300;
+  max-width: 680px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.lv-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+  margin-bottom: 0;
+}
+
+.lv-row.lv-master {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+
+.lv-left {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--black);
+}
+
+.lv-dept-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.lv-dept-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.lv-dept-name {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+}
+
+.lv-dept-role {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.lv-dept-desc {
+  font-size: 12.5px;
+  color: var(--text-body);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-top: 6px;
+}
+
+.lv-right {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0;
+  border-left: 1px solid var(--border);
+}
+
+.lv-sub {
+  padding: 16px 18px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lv-sub:last-child { border-right: none; }
+
+.lv-sub-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.lv-tool {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-body);
+  font-weight: 300;
+}
+
+.lv-tool img {
+  width: 18px; height: 18px;
+  object-fit: contain;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.lv-tool.star { color: var(--text-main); font-weight: 400; }
+
+.lv-connector {
+  width: 1px;
+  height: 28px;
+  background: var(--gold);
+  opacity: 0.3;
+  margin: 0 auto;
+}
+
+.lv-footer-bar {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.lv-footer-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-mid);
+}
+
+.lv-footer-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+}
+
+/* ── RESPONSIVE SYSTEMS ── */
+@media (max-width: 900px) {
+  .lv-row { grid-template-columns: 1fr; }
+  .lv-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .lv-right { grid-template-columns: repeat(2,1fr); }
+  .lv-sub:last-child { border-right: none; }
+  .sys-depts { grid-template-columns: 1fr; }
+  .platform-grid-extended { grid-template-columns: repeat(2,1fr); }
+  .ovp-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FRAMEWORK DIAGRAM ── */
+.framework-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+.fw-diagram {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 36px 40px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fw-diagram::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.fw-diagram-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  margin-bottom: 16px;
+}
+
+.fw-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.fw-node-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--border2);
+  border: 2px solid var(--border2);
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+  position: relative;
+}
+
+.fw-node-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: border-color 0.4s;
+}
+
+.fw-node.active .fw-node-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(232,168,56,0.5);
+}
+
+.fw-node.active .fw-node-dot::after {
+  border-color: rgba(232,168,56,0.3);
+}
+
+.fw-node-last.active .fw-node-dot {
+  background: var(--rose);
+  border-color: var(--rose);
+  box-shadow: 0 0 12px rgba(212,96,122,0.5);
+}
+
+.fw-node-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+  white-space: nowrap;
+  transition: color 0.4s;
+}
+
+.fw-node.active .fw-node-label { color: var(--gold); }
+.fw-node-last.active .fw-node-label { color: var(--rose); }
+
+.fw-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.fw-line-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0%;
+  background: var(--grad);
+  transition: width 0.6s ease;
+}
+
+.fw-line.filled .fw-line-fill { width: 100%; }
+
+.fw-loop-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-low);
+  text-align: center;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 24px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-mark {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 4px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--text-low);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+
+  #briefing, #profile, #discipline, #operations, #capabilities,
+  #framework, #platforms, #systems, #missions, #footage,
+  #intel, #certs, #packages, #faq, #channel {
+    padding: 80px 24px;
+  }
+
+  .briefing-grid { grid-template-columns: 1fr; gap: 40px; }
+  .briefing-stats { grid-template-columns: repeat(2,1fr); }
+  .profile-inner { grid-template-columns: 1fr; gap: 40px; }
+  .problems-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .phase { grid-template-columns: 60px 1fr; gap: 16px; }
+  .phase-desc { grid-column: 1 / -1; }
+  .platform-grid { grid-template-columns: repeat(3,1fr); }
+  .systems-grid { grid-template-columns: 1fr; }
+  .mission-sections { grid-template-columns: 1fr; }
+  .footage-grid { grid-template-columns: 1fr; }
+  .intel-grid { grid-template-columns: 1fr; }
+  .certs-grid { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 24px; }
+  footer { flex-direction: column; gap: 8px; padding: 20px 24px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb-container">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#briefing" class="nav-mark">JBM</a>
+  <ul class="nav-links">
+    <li><a href="#missions">// CASE STUDIES</a></li>
+    <li><a href="#footage">// REELS</a></li>
+    <li><a href="#packages">// PACKAGES</a></li>
+    <li><a href="#channel">// OPEN CHANNEL</a></li>
+  </ul>
+  <a href="#channel" class="nav-cta">&gt;_ INITIATE CONTACT</a>
+</nav>
+
+<!-- FILE_01 // BRIEFING -->
+<section id="briefing">
+  <div class="glyph-field" id="glyphField"></div>
+  <div class="briefing-inner">
+    <div class="briefing-top">
+      <div class="jbm-mark">JBM</div>
+      <div class="briefing-meta">
+        <span class="briefing-file">FIELD_MANUAL_OPEN // 2026 // FILE_01</span>
+        <span class="briefing-status"><span class="status-dot"></span>STATUS: ACTIVE — AVAILABLE FOR DEPLOYMENT</span>
+      </div>
+    </div>
+    <div class="briefing-grid">
+      <div class="briefing-text">
+        <h1 class="briefing-headline">
+          I Help<br>Brands<br><span class="accent">WIN</span><br>Social Media
+        </h1>
+        <p class="briefing-sub">
+          Most brands post. Few connect. I match sports and active lifestyle brands with the <em>exact voices their audience already trusts</em> — built by someone who lives the culture, not just studies it.
+        </p>
+        <div class="briefing-actions">
+          <a href="#channel" class="btn-primary">&gt;_ INITIATE CONTACT</a>
+          <a href="#missions" class="btn-ghost">&gt;_ ACCESS LOGS</a>
+        </div>
+        <div class="briefing-stats">
+          <div class="bstat">
+            <div class="bstat-num">236%</div>
+            <div class="bstat-label">Spike in Content Interactions</div>
+          </div>
+          <div class="bstat">
+            <div class="bstat-num">53K+</div>
+            <div class="bstat-label">Views from One Clip</div>
+          </div>
+          <div class="bstat">
+            <div class="bstat-num">2.6%</div>
+            <div class="bstat-label">CTR vs 0.9–1.9% Benchmark</div>
+          </div>
+          <div class="bstat">
+            <div class="bstat-num">60–70%</div>
+            <div class="bstat-label">Reduction in CAC</div>
+          </div>
+        </div>
+      </div>
+      <div class="video-frame reveal">
+        <div class="video-frame-header">
+          <div class="video-frame-dot r"></div>
+          <div class="video-frame-dot y"></div>
+          <div class="video-frame-dot g"></div>
+          <span class="video-frame-title">jbm_intro.mp4</span>
+        </div>
+        <div class="hero-photo-section">
+          <img src="julian.png" alt="Julian Matti" class="hero-photo-img">
+          <div class="hero-photo-overlay">
+            <span class="hero-photo-name">JULIAN MATTI</span>
+            <span class="hero-photo-role">CREATIVE STRATEGIST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_02 // OPERATIVE PROFILE -->
+<section id="profile">
+  <div class="profile-inner">
+    <div class="profile-left reveal">
+      <span class="file-label">FILE_02 // OPERATIVE PROFILE</span>
+      <div class="section-tag">MEET THE STRATEGIST</div>
+      <h2 class="profile-title">Built on Culture,<br>Driven by Data</h2>
+      <p class="profile-body">
+        I'm a Filipino-American creative strategist and influencer marketing specialist with 6+ years building influencer marketing programs, running organic and paid social campaigns, and driving measurable growth for sports, wellness, active lifestyle, fashion, martial arts, and F&B brands.
+      </p>
+      <p class="profile-body">
+        I'm a lifelong sports fan, a Muay Thai practitioner, and a BJJ blue belt. Most sports brands are founded by athletes. <em>I speak their language.</em> That's not a talking point — it's the reason athlete-founded brands like ELOS Thermal trusted me to build their influencer infrastructure from scratch.
+      </p>
+      <p class="profile-body">
+        That same cultural fluency runs through my food and hospitality work. From graduating culinary school and working in kitchens to launching my own F&B brand, I lived this industry before I ever marketed it. Whether the brand is built around performance or pleasure, I bring the same depth of understanding to both.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FILE_03 // DISCIPLINE -->
+<section id="discipline">
+  <div class="discipline-inner">
+    <div class="discipline-header reveal">
+      <span class="file-label">FILE_03 // WHAT IS IT?</span>
+      <span class="discipline-question">SOCIAL MEDIA STRATEGY & MANAGEMENT</span>
+      <h2 class="discipline-title">Building a Brand's Presence<br>With Purpose</h2>
+      <p class="discipline-body">
+        Social media strategy and management is planning, publishing, and engaging consistently — running paid campaigns when needed, and using data to improve every cycle. It pairs creative execution with strategy so a brand isn't just posting, it's growing on purpose.
+      </p>
+    </div>
+    <h3 class="discipline-why reveal">Every scroll is a chance.<br><span class="accent">Most brands miss it.</span></h3>
+    <div class="problems-grid">
+      <div class="problem-card reveal">
+        <span class="problem-num">PROBLEM_01</span>
+        <div class="problem-title">No consistent presence = no trust</div>
+        <div class="problem-body">Buyers research brands on social before purchasing. A dead or inconsistent profile loses them before you even know they arrived.</div>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-num">PROBLEM_02</span>
+        <div class="problem-title">Random posting = zero ROI</div>
+        <div class="problem-body">Content without strategy is noise. Every post needs to serve a purpose — awareness, engagement, or conversion.</div>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-num">PROBLEM_03</span>
+        <div class="problem-title">Wrong voices = wrong audience</div>
+        <div class="problem-body">Influencer marketing without alignment is wasted spend. The creator needs to believe in your brand before your audience will.</div>
+      </div>
+    </div>
+    <div class="solution-card reveal">
+      <span class="solution-label">SOLUTION</span>
+      <div class="solution-title">A System That Grows With You</div>
+      <p class="solution-body">I build complete social media ecosystems — strategy, content, influencer infrastructure, paid social execution, and reporting — so your brand compounds over time. Not just posts. A machine that works.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_04 // FIELD OPERATIONS -->
+<section id="operations">
+  <div class="operations-inner">
+    <div class="operations-header reveal">
+      <span class="file-label">FILE_04 // WHAT I DO</span>
+      <div class="section-tag">6 CORE SERVICES</div>
+      <h2 class="operations-title">Field Operations</h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <span class="svc-code">SVC_01</span>
+        <div class="svc-title">Strategy & Research</div>
+        <div class="svc-body">Goal setting, audience and platform strategy, content pillars, campaign planning, and competitor analysis — supported by market research, trend analysis, content gap identification, and customer pain-point research.</div>
+        <span class="svc-type">TYPE: STRATEGY</span>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-code">SVC_02</span>
+        <div class="svc-title">Content, Creative & Branding</div>
+        <div class="svc-body">Ideas, copy, hooks, storytelling, graphics, short-form video, Reels and TikTok — aligned to brand positioning, voice, visual identity, messaging, and creative direction.</div>
+        <span class="svc-type">TYPE: CREATIVE</span>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-code">SVC_03</span>
+        <div class="svc-title">Influencer & Ambassador Marketing</div>
+        <div class="svc-body">Creator sourcing, vetting, and outreach. Ambassador program architecture from scratch. Partnership databases, tiered compensation structures, UGC strategy, and campaign coordination. The full infrastructure — not just the introduction.</div>
+        <span class="svc-type">TYPE: INFLUENCE</span>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-code">SVC_04</span>
+        <div class="svc-title">Community & Engagement</div>
+        <div class="svc-body">Comments, DMs, customer engagement, social listening, reputation management, and community building. Building real relationships between your brand and its audience.</div>
+        <span class="svc-type">TYPE: RELATIONSHIP</span>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-code">SVC_05</span>
+        <div class="svc-title">Paid Social & Conversion</div>
+        <div class="svc-body">Meta and TikTok Ads with targeting, retargeting, and lookalike audiences. Creative and A/B testing, CTA strategy, funnel optimization, offer positioning, and attribution tracking.</div>
+        <span class="svc-type">TYPE: CONVERSION</span>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-code">SVC_06</span>
+        <div class="svc-title">Analytics & Reporting</div>
+        <div class="svc-body">Reach, engagement, growth, CTR, conversions, and CPA tracked and translated into actionable decisions. Monthly performance reports with clear next-step recommendations.</div>
+        <span class="svc-type">TYPE: INTELLIGENCE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_05 // EXTENDED CAPABILITIES -->
+<section id="capabilities">
+  <div class="capabilities-inner">
+    <span class="file-label reveal">FILE_05 // BEYOND SOCIAL</span>
+    <h2 class="capabilities-title reveal">Extended Capabilities</h2>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <span class="cap-code">ADD_SVC_01</span>
+        <div class="cap-title">Content Production & On-Site Direction</div>
+        <div class="cap-body">On-site content capture, photography direction, video planning, and editing for social-first formats. From culinary brand shoots to sports event coverage — I've been on the ground.</div>
+        <span class="cap-type">TYPE: CREATIVE</span>
+      </div>
+      <div class="cap-card reveal">
+        <span class="cap-code">ADD_SVC_02</span>
+        <div class="cap-title">Paid Media & Campaign Management</div>
+        <div class="cap-body">Meta Ads Manager campaigns from zero — pixel installation, audience segmentation, creative testing, and budget optimization. Proven results at bootstrap-level spend.</div>
+        <span class="cap-type">TYPE: ACQUISITION</span>
+      </div>
+      <div class="cap-card reveal">
+        <span class="cap-code">ADD_SVC_03</span>
+        <div class="cap-title">Funnel & Landing Page Optimization</div>
+        <div class="cap-body">GoHighLevel funnel builds, landing page improvements, and lead capture optimization to ensure paid traffic converts properly on the other side of the click.</div>
+        <span class="cap-type">TYPE: CONVERSION</span>
+      </div>
+      <div class="cap-card reveal">
+        <span class="cap-code">ADD_SVC_04</span>
+        <div class="cap-title">Automation & Workflow Systems</div>
+        <div class="cap-body">Make.com automation workflows connecting social, CRM, and reporting. Building systems that reduce manual work and keep campaigns running consistently without constant oversight.</div>
+        <span class="cap-type">TYPE: OPERATIONS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_06 // CAMPAIGN FRAMEWORK -->
+<section id="framework">
+  <div class="framework-inner">
+    <span class="file-label reveal">FILE_06 // THE PROCESS</span>
+    <div class="framework-header">
+      <h2 class="framework-title reveal">The Campaign<br>Framework</h2>
+      <p class="framework-sub reveal">How I turn brand presence into measurable results. Six phases. One system. Built to compound.</p>
+    </div>
+
+    <div class="framework-body">
+
+      <!-- VISUAL FLOW DIAGRAM -->
+      <div class="fw-diagram reveal">
+        <div class="fw-diagram-inner">
+          <div class="fw-node" data-phase="01">
+            <div class="fw-node-dot"></div>
+            <div class="fw-node-label">INTEL</div>
+          </div>
+          <div class="fw-line"><div class="fw-line-fill"></div></div>
+          <div class="fw-node" data-phase="02">
+            <div class="fw-node-dot"></div>
+            <div class="fw-node-label">STRATEGY</div>
+          </div>
+          <div class="fw-line"><div class="fw-line-fill"></div></div>
+          <div class="fw-node" data-phase="03">
+            <div class="fw-node-dot"></div>
+            <div class="fw-node-label">DEPLOYMENT</div>
+          </div>
+          <div class="fw-line"><div class="fw-line-fill"></div></div>
+          <div class="fw-node" data-phase="04">
+            <div class="fw-node-dot"></div>
+            <div class="fw-node-label">ENGAGEMENT</div>
+          </div>
+          <div class="fw-line"><div class="fw-line-fill"></div></div>
+          <div class="fw-node" data-phase="05">
+            <div class="fw-node-dot"></div>
+            <div class="fw-node-label">CONVERSION</div>
+          </div>
+          <div class="fw-line"><div class="fw-line-fill"></div></div>
+          <div class="fw-node fw-node-last" data-phase="06">
+            <div class="fw-node-dot"></div>
+            <div class="fw-node-label">DEBRIEF</div>
+          </div>
+        </div>
+        <div class="fw-loop-label">↺ CONTINUOUS CYCLE</div>
+      </div>
+
+      <!-- PHASE LIST -->
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-num">01</div>
+          <div class="phase-name">INTEL</div>
+          <div class="phase-desc">Before anything is built or posted, we gather intelligence. Audience research, competitor analysis, platform audit, and content gap identification. You can't win a campaign you don't understand.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">02</div>
+          <div class="phase-name">STRATEGY</div>
+          <div class="phase-desc">Intel becomes a plan. Goals, content pillars, messaging framework, platform priorities, and creator alignment. Every move has a purpose before it's made.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">03</div>
+          <div class="phase-name">DEPLOYMENT</div>
+          <div class="phase-desc">The plan goes live. Content creation, scheduling, influencer activation, and paid social launch. Precision execution across every channel simultaneously.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">04</div>
+          <div class="phase-name">ENGAGEMENT</div>
+          <div class="phase-desc">We don't post and disappear. Community management, audience nurturing, creator relationship management, and real-time optimization keep the campaign alive and compounding.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">05</div>
+          <div class="phase-name">CONVERSION</div>
+          <div class="phase-desc">Engagement becomes revenue. Paid social optimization, funnel refinement, lead capture, and offer positioning turn sustained attention into action.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-num">06</div>
+          <div class="phase-name">DEBRIEF</div>
+          <div class="phase-desc">Every campaign ends with a full performance review. What worked, what didn't, what we do differently next time. Learning compounds into stronger results every cycle.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- FILE_07B // ORGANIC VS PAID -->
+<section id="orgvspaid">
+  <div class="ovp-inner">
+    <span class="file-label reveal">FILE_07B // APPROACH</span>
+    <h2 class="ovp-title reveal">Organic <span class="accent">vs.</span> Paid</h2>
+
+    <div class="ovp-master reveal">
+      <div class="ovp-master-box">
+        <div class="ovp-master-badge">JBM</div>
+        <div class="ovp-master-label">PRIMARY OPERATOR</div>
+        <div class="ovp-master-name">Julian Matti</div>
+        <div class="ovp-master-role">Strategy & Operations</div>
+        <p class="ovp-master-desc">Orchestrates both branches of the growth engine — organic and paid — so every dollar and every post work toward the same outcome.</p>
+      </div>
+    </div>
+
+    <div class="ovp-grid reveal">
+
+      <div class="ovp-col">
+        <div class="ovp-col-label">ORGANIC SMM</div>
+        <p class="ovp-col-desc">Unpaid content, community, and consistency that builds trust and relationship over time.</p>
+        <div class="ovp-items">
+          <div class="ovp-item">Content Strategy & Creation</div>
+          <div class="ovp-item">Community Management</div>
+          <div class="ovp-item">Platform Management</div>
+          <div class="ovp-item">Influencer & Ambassador Programs</div>
+          <div class="ovp-item">Audience Psychology & Behavior</div>
+          <div class="ovp-item">Campaign Strategy</div>
+          <div class="ovp-item">Analytics & Reporting</div>
+        </div>
+      </div>
+
+      <div class="ovp-col">
+        <div class="ovp-col-label">PAID SMM</div>
+        <p class="ovp-col-desc">Budgeted media that buys reach, speed, and precision targeting on top of the organic foundation.</p>
+        <div class="ovp-items">
+          <div class="ovp-item">Meta & TikTok Ads</div>
+          <div class="ovp-item">Audience Targeting & Segmentation</div>
+          <div class="ovp-item">Ad Creative & Copy</div>
+          <div class="ovp-item">Funnel Strategy</div>
+          <div class="ovp-item">Budget & Bid Management</div>
+          <div class="ovp-item">Conversion Tracking & Pixel Setup</div>
+          <div class="ovp-item">A/B Testing & Iteration</div>
+        </div>
+        <div class="ovp-tags">
+          <span class="ovp-tag">CPC</span>
+          <span class="ovp-tag">ROAS</span>
+          <span class="ovp-tag">Custom Audiences</span>
+          <span class="ovp-tag">Top / Middle / Bottom Funnel</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ovp-hybrid reveal">
+      <div class="ovp-hybrid-label">// HYBRID STRATEGY</div>
+      <p class="ovp-hybrid-text">Organic builds relationship, paid builds reach — both build a brand that compounds.</p>
+      <p class="ovp-hybrid-sub">A hybrid approach lets organic content earn trust while paid media accelerates the audience that trust is built with. Neither works as well without the other.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FILE_07 // PLATFORMS -->
+<section id="platforms">
+  <div class="platforms-inner">
+    <span class="file-label reveal">FILE_07 // PLATFORM EXPERTISE</span>
+    <h2 class="platforms-title reveal">Every Platform<br>Has Its Own Language</h2>
+    <p class="platforms-sub reveal">Different algorithms. Different cultures. Different audiences. I don't post the same content everywhere — I translate your brand into the native language of each platform so it actually lands.</p>
+    <div class="platform-grid-extended reveal">
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/instagram/E8A838" alt="Instagram">
+        <div class="platform-card-name">INSTAGRAM</div>
+        <div class="platform-card-desc">Visual storytelling, Reels, community building, and brand aesthetic. The home of lifestyle and aspirational content.</div>
+      </div>
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/tiktok/E8A838" alt="TikTok">
+        <div class="platform-card-name">TIKTOK</div>
+        <div class="platform-card-desc">Fast, authentic, trend-native content. The discovery engine for reaching new audiences at scale with zero ad spend.</div>
+      </div>
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/facebook/E8A838" alt="Facebook">
+        <div class="platform-card-name">FACEBOOK</div>
+        <div class="platform-card-desc">Community groups, event promotion, paid social targeting, and reaching audiences that Instagram misses.</div>
+      </div>
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/linkedin/E8A838" alt="LinkedIn">
+        <div class="platform-card-name">LINKEDIN</div>
+        <div class="platform-card-desc">Founder-led thought leadership, B2B credibility, and professional brand building. Long-form content that converts.</div>
+      </div>
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/x/E8A838" alt="X">
+        <div class="platform-card-name">X / TWITTER</div>
+        <div class="platform-card-desc">Real-time conversation, cultural commentary, and brand personality. Where voices are built in public.</div>
+      </div>
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/reddit/E8A838" alt="Reddit">
+        <div class="platform-card-name">REDDIT</div>
+        <div class="platform-card-desc">The most honest audience on the internet. Community-first engagement with niche audiences that drive word-of-mouth.</div>
+      </div>
+      <div class="platform-card">
+        <img class="platform-icon-lg" src="https://cdn.simpleicons.org/pinterest/E8A838" alt="Pinterest">
+        <div class="platform-card-name">PINTEREST</div>
+        <div class="platform-card-desc">Visual search and long-term content discovery. A passive traffic engine that drives consistent inbound for lifestyle and F&amp;B brands.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_08 // SYSTEMS & TOOLS -->
+<section id="systems">
+  <div class="systems-inner">
+    <span class="file-label reveal">FILE_08 // HOW I WORK</span>
+    <h2 class="systems-title reveal">Core Systems</h2>
+    <p class="systems-sub reveal">One operator. Five departments. Every tool working toward the same mission.</p>
+
+    <!-- PRIMARY OPERATOR -->
+    <div class="lv-row lv-master reveal">
+      <div class="lv-left">
+        <div class="lv-dept-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="lv-dept-tag">PRIMARY OPERATOR</div>
+        <div class="lv-dept-name">Julian Matti</div>
+        <div class="lv-dept-role">JBM // Creative Strategist</div>
+        <p class="lv-dept-desc">Coordinates the entire Campaign Framework — strategy, content, influence, paid, and analytics — so every post, creator, and dollar work toward the same outcome.</p>
+      </div>
+      <div class="lv-right">
+        <div class="lv-sub">
+          <div class="lv-sub-label">STRATEGY & OPERATIONS</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion"><span>Notion</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=workspace.google.com&sz=64" alt="Google Workspace"><span>Google Workspace</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=clickup.com&sz=64" alt="ClickUp"><span>ClickUp</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=asana.com&sz=64" alt="Asana"><span>Asana</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">AI STRATEGY</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude Pro"><span>Claude Pro ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="ChatGPT"><span>ChatGPT</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64" alt="Perplexity"><span>Perplexity</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">CLIENT COMMUNICATION</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=slack.com&sz=64" alt="Slack"><span>Slack</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com&sz=64" alt="WhatsApp"><span>WhatsApp</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=zoom.us&sz=64" alt="Zoom"><span>Zoom</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=meet.google.com&sz=64" alt="Google Meet"><span>Google Meet</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=loom.com&sz=64" alt="Loom"><span>Loom</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=vids.google.com&sz=64" alt="Google Vids"><span>Google Vids</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-connector"></div>
+
+    <!-- VISIBILITY DEPARTMENT -->
+    <div class="lv-row reveal">
+      <div class="lv-left">
+        <div class="lv-dept-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="lv-dept-tag">VISIBILITY DEPARTMENT</div>
+        <div class="lv-dept-name">Awareness · Reach · Content Creation</div>
+        <p class="lv-dept-desc">Builds visibility and attracts the right audience through consistent, on-brand content across every platform.</p>
+      </div>
+      <div class="lv-right">
+        <div class="lv-sub">
+          <div class="lv-sub-label">CONTENT PLANNING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion"><span>Notion</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=trends.google.com&sz=64" alt="Google Trends"><span>Google Trends</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="Meta Ads Library"><span>Meta Ads Library</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=usemotion.com&sz=64" alt="Motion Analytics"><span>Motion Analytics</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">GRAPHIC DESIGN</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=canva.com&sz=64" alt="Canva Pro"><span>Canva Pro ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=affinity.serif.com&sz=64" alt="Affinity"><span>Affinity</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=figma.com&sz=64" alt="Figma"><span>Figma</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=photoshop.adobe.com&sz=64" alt="Adobe Photoshop"><span>Adobe Photoshop</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=illustrator.adobe.com&sz=64" alt="Adobe Illustrator"><span>Adobe Illustrator</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">VIDEO EDITING</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=capcut.com&sz=64" alt="CapCut"><span>CapCut ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=canva.com&sz=64" alt="Canva"><span>Canva</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=blackmagicdesign.com&sz=64" alt="DaVinci Resolve"><span>DaVinci Resolve</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=premiere.adobe.com&sz=64" alt="Adobe Premiere Pro"><span>Adobe Premiere Pro</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">AI CONTENT</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="Google Gemini"><span>Google Gemini</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="ChatGPT"><span>ChatGPT</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude"><span>Claude</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">CONTENT SCHEDULING</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=business.facebook.com&sz=64" alt="Meta Business Suite"><span>Meta Business Suite ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=buffer.com&sz=64" alt="Buffer"><span>Buffer</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=later.com&sz=64" alt="Later"><span>Later</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gainapp.com&sz=64" alt="Gain"><span>Gain</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=sproutsocial.com&sz=64" alt="Sprout Social"><span>Sprout Social</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=metricool.com&sz=64" alt="Metricool"><span>Metricool</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">ANALYTICS</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=business.facebook.com&sz=64" alt="Meta Business Suite"><span>Meta Business Suite ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=adsmanager.facebook.com&sz=64" alt="Meta Ads Manager"><span>Meta Ads Manager</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="Instagram Insights"><span>Instagram Insights</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" alt="LinkedIn Analytics"><span>LinkedIn Analytics</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=64" alt="TikTok Creator Analytics"><span>TikTok Creator Analytics</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">PHOTO EDITING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=lightroom.adobe.com&sz=64" alt="Adobe Lightroom"><span>Adobe Lightroom</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=affinity.serif.com&sz=64" alt="Affinity"><span>Affinity</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=photoshop.adobe.com&sz=64" alt="Adobe Photoshop"><span>Adobe Photoshop</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-connector"></div>
+
+    <!-- ENGAGEMENT DEPARTMENT -->
+    <div class="lv-row reveal">
+      <div class="lv-left">
+        <div class="lv-dept-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="lv-dept-tag">ENGAGEMENT DEPARTMENT</div>
+        <div class="lv-dept-name">Community Management</div>
+        <p class="lv-dept-desc">Engages, nurtures, and builds relationships with the audience. The human side of the brand online.</p>
+      </div>
+      <div class="lv-right">
+        <div class="lv-sub">
+          <div class="lv-sub-label">INBOX MANAGEMENT</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=business.facebook.com&sz=64" alt="Meta Business Suite Inbox"><span>Meta Business Suite Inbox ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gmail.com&sz=64" alt="Gmail"><span>Gmail</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">COMMUNITY MONITORING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=64" alt="TikTok Discover"><span>TikTok Discover</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="Reddit"><span>Reddit</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="Facebook Groups"><span>Facebook Groups</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=discord.com&sz=64" alt="Discord"><span>Discord</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">CONTENT INSPO</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="Instagram Explore"><span>Instagram Explore</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="Facebook"><span>Facebook</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="Meta Ads Library"><span>Meta Ads Library</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=cosmos.so&sz=64" alt="Cosmos"><span>Cosmos</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="Pinterest"><span>Pinterest</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">AI ASSISTANT</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude"><span>Claude</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="Google Gemini"><span>Google Gemini</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="ChatGPT"><span>ChatGPT</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">UGC MANAGEMENT</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=64" alt="Google Drive"><span>Google Drive</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion"><span>Notion</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=later.com&sz=64" alt="Later"><span>Later</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">ANALYTICS</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=business.facebook.com&sz=64" alt="Meta Business Suite"><span>Meta Business Suite ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=metricool.com&sz=64" alt="Metricool"><span>Metricool</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-connector"></div>
+
+    <!-- LEADS DEPARTMENT -->
+    <div class="lv-row reveal">
+      <div class="lv-left">
+        <div class="lv-dept-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="lv-dept-tag">LEADS DEPARTMENT</div>
+        <div class="lv-dept-name">Lead Generation</div>
+        <p class="lv-dept-desc">Captures and qualifies leads through systems and automation. Turns attention into pipeline.</p>
+      </div>
+      <div class="lv-right">
+        <div class="lv-sub">
+          <div class="lv-sub-label">CRM</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" alt="HubSpot"><span>HubSpot ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion"><span>Notion</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=64" alt="GoHighLevel"><span>GoHighLevel</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">FORMS</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=forms.google.com&sz=64" alt="Google Forms"><span>Google Forms</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=typeform.com&sz=64" alt="Typeform"><span>Typeform</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">EMAIL MARKETING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=mailchimp.com&sz=64" alt="Mailchimp"><span>Mailchimp</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">BOOKING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=calendly.com&sz=64" alt="Calendly"><span>Calendly</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=calendar.google.com&sz=64" alt="Google Calendar"><span>Google Calendar</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">AUTOMATION</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=make.com&sz=64" alt="Make.com"><span>Make.com ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="Zapier"><span>Zapier</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=n8n.io&sz=64" alt="n8n"><span>n8n</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">LEAD TRACKING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=sheets.google.com&sz=64" alt="Google Sheets"><span>Google Sheets</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" alt="HubSpot"><span>HubSpot</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion"><span>Notion</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-connector"></div>
+
+    <!-- SALES DEPARTMENT -->
+    <div class="lv-row reveal">
+      <div class="lv-left">
+        <div class="lv-dept-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="lv-dept-tag">SALES DEPARTMENT</div>
+        <div class="lv-dept-name">Conversion & Client Success</div>
+        <p class="lv-dept-desc">Converts leads into clients and drives long-term success. Closes the loop from awareness to revenue.</p>
+      </div>
+      <div class="lv-right">
+        <div class="lv-sub">
+          <div class="lv-sub-label">CRM</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" alt="HubSpot"><span>HubSpot ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion"><span>Notion</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">PROPOSAL CREATION</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=canva.com&sz=64" alt="Canva"><span>Canva</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=docs.google.com&sz=64" alt="Google Docs"><span>Google Docs</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">COMMUNICATION</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gmail.com&sz=64" alt="Gmail"><span>Gmail</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=zoom.us&sz=64" alt="Zoom"><span>Zoom</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=meet.google.com&sz=64" alt="Google Meet"><span>Google Meet</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com&sz=64" alt="WhatsApp"><span>WhatsApp</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">AI SALES ASSISTANT</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude"><span>Claude ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="ChatGPT"><span>ChatGPT</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">SALES REPORTING</div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=sheets.google.com&sz=64" alt="Google Sheets"><span>Google Sheets</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=64" alt="GoHighLevel"><span>GoHighLevel</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-connector"></div>
+
+    <!-- BONUS: NO CODE BUILDERS -->
+    <div class="lv-row reveal">
+      <div class="lv-left">
+        <div class="lv-dept-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="lv-dept-tag">BONUS DEPARTMENT</div>
+        <div class="lv-dept-name">No Code Builders</div>
+        <p class="lv-dept-desc">AI-powered build tools that extend capability without writing traditional code. From portfolio builds to automated workflows and deployments.</p>
+      </div>
+      <div class="lv-right">
+        <div class="lv-sub">
+          <div class="lv-sub-label">NO CODE BUILDERS</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude"><span>Claude ★</span></div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=cursor.com&sz=64" alt="Cursor"><span>Cursor ★</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="Codex"><span>Codex</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="Gemini"><span>Gemini</span></div>
+          <div class="lv-tool"><img src="https://www.google.com/s2/favicons?domain=base44.com&sz=64" alt="Base44"><span>Base44</span></div>
+        </div>
+        <div class="lv-sub">
+          <div class="lv-sub-label">HOSTING & DEPLOYMENT</div>
+          <div class="lv-tool star"><img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="Vercel"><span>Vercel ★</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lv-footer-bar reveal">
+      <span class="lv-footer-text">ONE FRAMEWORK. FIVE DEPARTMENTS. ONE MISSION.</span>
+      <span class="lv-footer-status"><span class="status-dot"></span>OPERATIVE: JBM</span>
+    </div>
+
+  </div>
+</section>
+<!-- FILE_09 // MISSION LOGS -->
+<section id="missions">
+  <div class="missions-inner">
+    <span class="file-label reveal">FILE_09 // CASE STUDIES</span>
+    <h2 class="missions-title reveal">Case Studies</h2>
+    <div class="mission-logs">
+
+      <!-- ELOS -->
+      <div class="mission-log reveal">
+        <div class="mission-header" onclick="toggleMission(this)">
+          <div class="mission-header-left">
+            <div class="mission-badge">EL</div>
+            <div>
+              <div class="mission-name">Building a Brand's Voice From Scratch</div>
+              <div class="mission-client">ELOS THERMAL — BALTIMORE, MD</div>
+            </div>
+          </div>
+          <div class="mission-toggle">&gt;_ OPEN LOG <span class="arrow">›</span></div>
+        </div>
+        <div class="mission-body">
+          <div class="mission-sections">
+            <div>
+              <span class="mission-section-label">SITUATION</span>
+              <p class="mission-section-body">Anthony Dragisic — former Division I soccer player at Villanova — built a product for cold-weather athletes. The brand had a story worth telling but zero infrastructure to tell it at scale. No influencer program, no creator database, no outreach system.</p>
+            </div>
+            <div>
+              <span class="mission-section-label">EXECUTION</span>
+              <p class="mission-section-body">Built the entire influencer marketing infrastructure from scratch: tiered ambassador program (The Field Team), creator sourcing criteria, compensation structure, Notion-based partnership database, and a podcast partnership outreach pipeline targeting grassroots outdoor shows. Re-engaged a dormant podcast relationship and proposed a sponsorship package.</p>
+            </div>
+            <div>
+              <span class="mission-section-label">OUTCOME</span>
+              <div class="mission-metrics">
+                <div>
+                  <div class="mission-metric-num">53K+</div>
+                  <div class="mission-metric-label">Views from one clip</div>
+                  <div class="mission-metric-note">+ 37,000+ likes · Zero ad spend</div>
+                </div>
+                <div>
+                  <div class="mission-metric-num">236%</div>
+                  <div class="mission-metric-label">Spike in monthly content interactions</div>
+                </div>
+                <div>
+                  <div class="mission-metric-num">135%</div>
+                  <div class="mission-metric-label">Increase in overall views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FixZa -->
+      <div class="mission-log reveal">
+        <div class="mission-header" onclick="toggleMission(this)">
+          <div class="mission-header-left">
+            <div class="mission-badge">FZ</div>
+            <div>
+              <div class="mission-name">Rescuing a Failing Campaign in 30 Days</div>
+              <div class="mission-client">FIXZA — WHANGAREI, NEW ZEALAND</div>
+            </div>
+          </div>
+          <div class="mission-toggle">&gt;_ OPEN LOG <span class="arrow">›</span></div>
+        </div>
+        <div class="mission-body">
+          <div class="mission-sections">
+            <div>
+              <span class="mission-section-label">SITUATION</span>
+              <p class="mission-section-body">A home services startup entering the New Zealand market with no social presence, no pixel history, and a failing Meta campaign. Zero algorithmic foundation. Budget was minimal. Pressure was high.</p>
+            </div>
+            <div>
+              <span class="mission-section-label">EXECUTION</span>
+              <p class="mission-section-body">Diagnosed the failing strategy, rebuilt it from scratch. Installed and calibrated Meta Pixel from zero. Restructured campaign objectives. Segmented audiences across Tradie and Customer profiles. Optimized landing pages and sales funnels in GoHighLevel to improve lead capture on the other side of the click.</p>
+            </div>
+            <div>
+              <span class="mission-section-label">OUTCOME</span>
+              <div class="mission-metrics">
+                <div>
+                  <div class="mission-metric-num">2.6%</div>
+                  <div class="mission-metric-label">CTR achieved</div>
+                  <div class="mission-metric-note">vs. 0.9–1.9% industry benchmark</div>
+                </div>
+                <div>
+                  <div class="mission-metric-num">$0.31</div>
+                  <div class="mission-metric-label">CPC · 1,872 quality clicks</div>
+                  <div class="mission-metric-note">Budget: NZD $582.69</div>
+                </div>
+                <div>
+                  <div class="mission-metric-num">60–70%</div>
+                  <div class="mission-metric-label">Reduction in customer acquisition costs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FILE_10 // FIELD FOOTAGE -->
+<section id="footage">
+  <div class="footage-inner">
+    <span class="file-label reveal">FILE_10 // CONTENT</span>
+    <h2 class="footage-title reveal">Reels</h2>
+    <div class="footage-grid">
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/19pFsGOO39QE02V_wz0lZutN2DWVbWJS_/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">ELOS THERMAL</div>
+          <div class="footage-desc">Product Launch Hype Reel</div>
+          <div class="footage-tags">
+            <span class="footage-tag">PRODUCT LAUNCH</span>
+            <span class="footage-tag">INSTAGRAM</span>
+          </div>
+        </div>
+      </div>
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/1n2yMngsmJz559xyKcFwD1oxpXWqNNcn5/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">EVERYTHING BAR</div>
+          <div class="footage-desc">UFC Legend Meet & Greet Event Coverage</div>
+          <div class="footage-tags">
+            <span class="footage-tag">EVENT COVERAGE</span>
+            <span class="footage-tag">UFC</span>
+          </div>
+        </div>
+      </div>
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/1HgbJ-mMfhVEpEW2acMUzExib9-vF-54G/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">ELOS THERMAL</div>
+          <div class="footage-desc">Educational Authority Reel</div>
+          <div class="footage-tags">
+            <span class="footage-tag">EDUCATIONAL</span>
+            <span class="footage-tag">INSTAGRAM</span>
+            <span class="footage-tag">TIKTOK</span>
+          </div>
+        </div>
+      </div>
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/1OaZO4sc6RC_EE88qJUGgqiYOMxTQz4Pc/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">EVERYTHING BAR</div>
+          <div class="footage-desc">Chicago Bulls Preseason Highlight Reel</div>
+          <div class="footage-tags">
+            <span class="footage-tag">HIGHLIGHT REEL</span>
+            <span class="footage-tag">NBA</span>
+          </div>
+        </div>
+      </div>
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/1zMuEbC0dC1Df4LYHFU87ZCWaif7VqcEL/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">EVERYTHING BAR</div>
+          <div class="footage-desc">UFC Event Hype Reel</div>
+          <div class="footage-tags">
+            <span class="footage-tag">HYPE REEL</span>
+            <span class="footage-tag">SPORTS</span>
+          </div>
+        </div>
+      </div>
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/1egRiJWRfCnWujma7nypgOR4TSKBcdjWe/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">V BOUTIQUE AESTHETICS & WELLNESS</div>
+          <div class="footage-desc">Doctor-Led Educational Reel</div>
+          <div class="footage-tags">
+            <span class="footage-tag">EDUCATIONAL</span>
+            <span class="footage-tag">INSTAGRAM</span>
+            <span class="footage-tag">TIKTOK</span>
+          </div>
+        </div>
+      </div>
+      <div class="footage-item reveal">
+        <iframe class="footage-video" src="https://drive.google.com/file/d/11YwNXRpfEBoYep7NeWqRfeJdCFa8scID/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="footage-info">
+          <div class="footage-client">FIXZA</div>
+          <div class="footage-desc">Paid Ad Reel — Meta Campaign</div>
+          <div class="footage-tags">
+            <span class="footage-tag">PAID AD</span>
+            <span class="footage-tag">META ADS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_11 // INTEL -->
+<section id="intel">
+  <div class="intel-inner">
+    <span class="file-label reveal">FILE_11 // CLIENT TESTIMONIALS</span>
+    <h2 class="intel-title reveal">Client Testimonials</h2>
+    <div class="intel-grid">
+      <div class="intel-card reveal">
+        <div class="intel-quote">Julian went above and beyond for ELOS during his time with the company. On top of always delivering work on time, with quality, and with consistent brand alignment, he aided in strategy for the broader social media and influencer strategy for the brand. His contribution in the early stages of our growth cannot be understated. Truly a pleasure to work with and could not recommend highly enough for any paid and organic social media support and influencer strategy.</div>
+        <div class="intel-source">
+          <div class="intel-avatar">AD</div>
+          <div>
+            <div class="intel-name">Anthony Dragisics</div>
+            <div class="intel-role">CO-FOUNDER · ELOS THERMAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="intel-card reveal">
+        <div class="intel-quote">Julian is a true joy to work with, mainly because of his attention to detail and desire to do it the right way. I never saw Julian cut any corners and always admired his work ethic.</div>
+        <div class="intel-source">
+          <div class="intel-avatar">CP</div>
+          <div>
+            <div class="intel-name">Chase Pickett</div>
+            <div class="intel-role">CEO · PRECISION SOCIAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="intel-card reveal">
+        <div class="intel-quote">Julian is a pleasure to work with and could not be any more genuine. Julian truly does work hard and is incredibly diligent.</div>
+        <div class="intel-source">
+          <div class="intel-avatar">GB</div>
+          <div>
+            <div class="intel-name">Gabriel Burch</div>
+            <div class="intel-role">DIGITAL MARKETING</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_12 // CERTIFICATIONS -->
+<section id="certs">
+  <div class="certs-inner">
+    <span class="file-label reveal">FILE_12 // CREDENTIALS</span>
+    <h2 class="certs-title reveal">Certifications</h2>
+    <div class="certs-grid">
+      <div class="cert-item reveal">
+        <span class="cert-name">Creative Strategy Certification</span>
+        <span class="cert-issuer">MOTION · 2026</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">Meta Ads Manager Certification</span>
+        <span class="cert-issuer">META · 2024</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">Meta Digital Marketing Associate</span>
+        <span class="cert-issuer">META · 2023</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">Data-Driven Marketing</span>
+        <span class="cert-issuer">META · 2024</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">AI-Powered Marketing</span>
+        <span class="cert-issuer">SEMRUSH · 2025</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">Social Media Marketing I & II</span>
+        <span class="cert-issuer">HUBSPOT · 2024–25</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">Foundations of Digital Marketing & E-commerce</span>
+        <span class="cert-issuer">GOOGLE · 2023</span>
+      </div>
+      <div class="cert-item reveal">
+        <span class="cert-name">Make.com Automation Basics & Foundations</span>
+        <span class="cert-issuer">MAKE · 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE_13 // DEPLOYMENT PACKAGES -->
+<section id="packages">
+  <div class="packages-inner">
+    <span class="file-label reveal">FILE_13 // PACKAGES</span>
+    <h2 class="packages-title reveal">Deployment Packages</h2>
+    <div class="packages-grid">
+
+      <div class="pkg-card reveal">
+        <span class="pkg-code">PKG_01 // ENTRY</span>
+        <div class="pkg-name">BUILD</div>
+        <div class="pkg-desc">For brands starting from scratch or needing a consistent, strategic foundation to grow from.</div>
+        <ul class="pkg-items">
+          <li>Goal setting & platform strategy</li>
+          <li>Content pillars & messaging framework</li>
+          <li>Content calendar management</li>
+          <li>Caption writing & creative direction</li>
+          <li>Scheduling & publishing</li>
+          <li>Community management</li>
+          <li>Monthly analytics report</li>
+        </ul>
+        <a href="#channel" class="btn-ghost">&gt;_ INITIATE CONTACT</a>
+      </div>
+
+      <div class="pkg-card featured reveal">
+        <span class="pkg-code">PKG_02 // GROWTH</span>
+        <div class="pkg-name">SCALE</div>
+        <div class="pkg-desc">For brands ready to grow beyond organic through influencer marketing and paid social campaigns.</div>
+        <ul class="pkg-items">
+          <li>Everything in BUILD</li>
+          <li>Influencer sourcing, vetting & outreach</li>
+          <li>Ambassador program architecture</li>
+          <li>Creator database management</li>
+          <li>UGC strategy & direction</li>
+          <li>Partnership coordination & tracking</li>
+          <li>Meta & TikTok paid social campaigns</li>
+          <li>Campaign performance reporting</li>
+        </ul>
+        <a href="#channel" class="btn-primary">&gt;_ INITIATE CONTACT</a>
+      </div>
+
+      <div class="pkg-card reveal">
+        <span class="pkg-code">PKG_03 // COMMAND</span>
+        <div class="pkg-name">LEAD</div>
+        <div class="pkg-desc">For brands that need a full strategic partner embedded across their entire marketing operation.</div>
+        <ul class="pkg-items">
+          <li>Everything in SCALE</li>
+          <li>Creative strategy & campaign framework</li>
+          <li>Hook development & A/B testing</li>
+          <li>Full-funnel optimization</li>
+          <li>Creative brief development</li>
+          <li>Performance diagnosis & iteration</li>
+          <li>Strategic advisory & consulting</li>
+          <li>Priority access & dedicated support</li>
+        </ul>
+        <a href="#channel" class="btn-ghost">&gt;_ INITIATE CONTACT</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FILE_14 // FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <span class="file-label reveal">FILE_14 // QUICK ANSWERS</span>
+    <h2 class="faq-title reveal">Frequently Asked</h2>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Are you available for hire?</span>
+          <span class="faq-arrow">›</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. I'm available for freelance, project-based, and full-time engagements with international clients. I'm a U.S. citizen currently relocating to New York, NY and open to onsite, hybrid, and remote work.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What industries do you specialize in?</span>
+          <span class="faq-arrow">›</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sports, active lifestyle, fitness, martial arts, and food & beverage brands are my core verticals. I'm a lifelong sports fan, Muay Thai practitioner, and BJJ blue belt — I work best with brands where I can bring genuine cultural fluency, not just marketing expertise.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What makes your influencer marketing different?</span>
+          <span class="faq-arrow">›</span>
+        </div>
+        <div class="faq-answer">
+          <p>I don't just find influencers. I build the infrastructure — sourcing criteria, vetting processes, compensation structures, partnership databases, and performance tracking systems. At ELOS Thermal, I built The Field Team ambassador program from the ground up. That's the difference between a campaign and a machine.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Do you work with brands outside your core niches?</span>
+          <span class="faq-arrow">›</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, if the work is a strong fit. I've delivered results for home services, legal, and wellness brands as well. If you're unsure, reach out and we'll have an honest conversation about whether I'm the right fit for your specific goals.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How do I get started?</span>
+          <span class="faq-arrow">›</span>
+        </div>
+        <div class="faq-answer">
+          <p>Use the Open Channel form below. Tell me about your brand, what you're trying to achieve, and which package feels closest to what you need. I'll review your submission and respond within 24 hours.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FILE_15 // OPEN CHANNEL -->
+<section id="channel">
+  <div class="channel-glow"></div>
+  <div class="channel-inner">
+    <div class="channel-header reveal">
+      <div class="channel-tag">FILE_15 // OPEN CHANNEL</div>
+      <h2 class="channel-title">Let's Make<br><span class="accent">It Work</span></h2>
+      <p class="channel-sub">If you're building something worth believing in and need the right voices carrying your message, let's talk. Every submission is personally reviewed.</p>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-header">
+        <span>INTAKE_PROTOCOL // JBM</span>
+        <span class="form-status">ACCEPTING SUBMISSIONS</span>
+      </div>
+      <div id="fs-success">
+        <p>&gt;_ TRANSMISSION RECEIVED. I'll be in touch within 24 hours.</p>
+      </div>
+      <div id="fs-error">
+        <p>TRANSMISSION FAILED. Please try again or email julianlmatti@gmail.com directly.</p>
+      </div>
+      <form id="contact-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="name">NAME</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required data-fs-field>
+            <span data-fs-error="name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="email">EMAIL</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field>
+            <span data-fs-error="email"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="brand">BRAND / COMPANY</label>
+            <input class="form-input" type="text" id="brand" name="brand" placeholder="Your brand name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="package">PACKAGE INTEREST</label>
+            <select class="form-select" id="package" name="package">
+              <option value="">Select a package</option>
+              <option value="build">BUILD — Foundation</option>
+              <option value="scale">SCALE — Growth + Influencer Marketing</option>
+              <option value="lead">LEAD — Full Strategic Partner</option>
+              <option value="custom">Custom Project</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label class="form-label" for="message">MISSION BRIEF</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about your brand, your goals, and what you're trying to achieve..." required data-fs-field></textarea>
+            <span data-fs-error="message"></span>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary form-submit" data-fs-submit-btn>&gt;_ SEND TRANSMISSION</button>
+      </form>
+    </div>
+    <div class="channel-links reveal">
+      <a href="mailto:julianlmatti@gmail.com" class="channel-link">EMAIL</a>
+      <a href="https://linkedin.com/in/julian-matti-76973a199" target="_blank" class="channel-link">LINKEDIN</a>
+      <a href="https://portfolio-jbm5.vercel.app" class="channel-link">MAIN SITE</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-mark">JBM // FIELD MANUAL</span>
+  <span class="footer-copy">© 2026 JULIAN MATTI · CREATIVE STRATEGIST · CLEARANCE: CLIENT-READY</span>
+</footer>
+
+<script>
+// Glyph field
+const glyphs = ['∆','Ω','∑','≡','⌬','◈','⬡','◆','▲','⬢','≈','∞','⊕','⊗','◎','⌁','⌂','⌘','⌖','⍟','⎔','⏣','␥','⑂','Ψ','Λ','Φ','Γ','Δ','Σ','01','10','00','11','JBM','//'];
+const gf = document.getElementById('glyphField');
+if (gf) {
+  for (let i = 0; i < 48; i++) {
+    const g = document.createElement('span');
+    g.className = 'glyph';
+    g.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+    g.style.left = Math.random() * 100 + '%';
+    g.style.top = (20 + Math.random() * 75) + '%';
+    g.style.setProperty('--dur', (6 + Math.random() * 10) + 's');
+    g.style.setProperty('--delay', (Math.random() * 8) + 's');
+    g.style.fontSize = (9 + Math.random() * 6) + 'px';
+    if (Math.random() > 0.7) g.style.color = 'var(--rose)';
+    if (Math.random() > 0.85) g.style.color = 'var(--cyan)';
+    gf.appendChild(g);
+  }
+}
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
+
+// Framework diagram animation
+(function() {
+  const nodes = document.querySelectorAll('.fw-node');
+  const lines = document.querySelectorAll('.fw-line');
+  const diagram = document.querySelector('.fw-diagram');
+  if (!diagram) return;
+
+  let animated = false;
+
+  function animateDiagram() {
+    if (animated) return;
+    animated = true;
+    nodes.forEach((node, i) => {
+      setTimeout(() => {
+        node.classList.add('active');
+        if (lines[i]) lines[i].classList.add('filled');
+      }, i * 300);
+    });
+  }
+
+  const diagObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(animateDiagram, 400);
+      diagObs.disconnect();
+    }
+  }, { threshold: 0.3 });
+
+  diagObs.observe(diagram);
+
+  // Also pulse active node on phase hover
+  document.querySelectorAll('.phase').forEach((phase, i) => {
+    phase.addEventListener('mouseenter', () => {
+      nodes.forEach(n => n.style.transform = '');
+      if (nodes[i]) nodes[i].style.transform = 'scale(1.3)';
+    });
+    phase.addEventListener('mouseleave', () => {
+      nodes.forEach(n => n.style.transform = '');
+    });
+  });
+})();
+
+// Mission log accordion
+function toggleMission(header) {
+  const log = header.closest('.mission-log');
+  log.classList.toggle('open');
+}
+
+// Framework phase stagger
+document.querySelectorAll('.phase').forEach((phase, i) => {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => phase.classList.add('visible'), i * 120);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(phase);
+});
+
+// FAQ accordion
+function toggleFaq(question) {
+  const item = question.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+// Formspree Ajax
+window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
+formspree('initForm', {
+  formElement: '#contact-form',
+  formId: 'xjyborln',
+  onSuccess: function() {
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('fs-success').style.display = 'block';
+  },
+  onError: function() {
+    document.getElementById('fs-error').style.display = 'block';
+  }
+});
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
