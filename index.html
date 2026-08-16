@@ -1257,6 +1257,7 @@ footer {
         <span class="subbox-label">CRM</span>
         <div class="tool-row"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" alt="">HubSpot<span class="star">★</span></div>
         <div class="tool-row"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="">Notion</div>
+        <div class="tool-row"><img src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=64" alt="">GoHighLevel</div>
       </div>
       <div>
         <span class="subbox-label">Proposal Creation</span>
@@ -1677,7 +1678,6 @@ footer {
           </div>
           <button type="submit" class="btn btn-primary btn-block">&gt;_ SEND TRANSMISSION</button>
           <div class="form-msg success" id="formSuccess">I'll be in touch within 24 hours.</div>
-          <div class="form-msg error" id="formError">Please try again or email directly.</div>
         </form>
       </div>
     </div>
@@ -1809,7 +1809,7 @@ function toggleFaq(qEl) {
     var successMsg = document.getElementById('formSuccess');
     var errorMsg = document.getElementById('formError');
     successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
+    if (errorMsg) errorMsg.style.display = 'none';
 
     if (window.formspree && window.formspree.ajax) {
       window.formspree.ajax(form.action, new FormData(form), { method: 'POST' })
@@ -1818,7 +1818,7 @@ function toggleFaq(qEl) {
           form.reset();
         })
         .catch(function () {
-          errorMsg.style.display = 'block';
+          if (errorMsg) errorMsg.style.display = 'block';
         });
     } else {
       fetch(form.action, {
@@ -1827,8 +1827,8 @@ function toggleFaq(qEl) {
         headers: { 'Accept': 'application/json' }
       }).then(function (res) {
         if (res.ok) { successMsg.style.display = 'block'; form.reset(); }
-        else { errorMsg.style.display = 'block'; }
-      }).catch(function () { errorMsg.style.display = 'block'; });
+        else { if (errorMsg) errorMsg.style.display = 'block'; }
+      }).catch(function () { if (errorMsg) errorMsg.style.display = 'block'; });
     }
   });
 })();
