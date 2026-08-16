@@ -7,7 +7,7 @@
 <meta name="description" content="Julian Matti — Creative Strategist & Influencer Marketing Specialist. Strategy. Content. Influence. Built for brands that compete.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <style>
 
@@ -189,8 +189,11 @@ section, header, footer { position: relative; z-index: 1; }
   97% { text-shadow: -1px 0 var(--gold), 1px 0 var(--rose); transform: translate(0, 1px); }
   98% { text-shadow: none; transform: translate(0,0); }
 }
-.hero-headline, .section-head h2, .channel-headline, .discipline-lede {
+.section-head h2, .channel-headline, .discipline-lede, .hero-headline .line {
   animation: glitchPulse 8s infinite;
+}
+.hero-headline .line.grad-text {
+  animation: glitchPulse 2.2s infinite;
 }
 
 /* Reveal */
@@ -337,7 +340,14 @@ section, header, footer { position: relative; z-index: 1; }
 .briefing-file { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-mid); letter-spacing: 0.06em; }
 .briefing-status { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.06em; }
 
-.hero-headline { font-size: clamp(52px, 8vw, 104px); color: var(--white); margin-bottom: 26px; }
+.hero-headline {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 6vw, 76px);
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin-bottom: 26px;
+}
 .hero-headline span.line { display: block; }
 
 .hero-sub { font-size: 17px; color: var(--text-body); max-width: 520px; margin-bottom: 36px; font-weight: 300; }
